@@ -5,11 +5,14 @@ import { createService, getServices, getServicesById, updateService, deleteServi
 const router = express.Router()
 
 //definir ruta
-router.post('/', createService) 
-router.get('/', getServices)
-router.get('/:id', getServicesById)
-router.put('/:id', updateService)
-router.delete('/:id', deleteService)
+router.route('/')
+    .post(createService)
+    .get(getServices)
+ 
+router.route('/id')
+    .get(getServicesById)
+    .put(updateService)
+    .delete(deleteService)
 
 
 export default router
