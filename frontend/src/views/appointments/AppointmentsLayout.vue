@@ -20,13 +20,13 @@
 
             <nav class="flex gap-2 items-center justify-end">
                 <button
-                class="p-3 text-black-200 uppercase text-xs font-black rounded-lg">
+                class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">
                     Mis citas
                 </button>
 
                 <RouterLink
                 :to="{name:'new-appointment'}"
-                class="p-3 text-black-200 uppercase text-xs font-black rounded-lg bg-blue-700">
+                class="p-2 text-black-200 uppercase text-xs font-black rounded-lg bg-blue-700">
                 Nueva cita</RouterLink>
 
             </nav>
