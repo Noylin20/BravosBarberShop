@@ -7,8 +7,8 @@
     
         <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1>
         <div class="flex flex-col space-y-5">
-            <div class="flex gap-2 items-center">
-                <!-- deberia estar en el navBar -->
+            <!-- <div class="flex gap-2 items-center">
+              deberia estar en el navBar
                 <p class="text-black text-right">Hola: Usuario</p>
 
                 <button
@@ -16,7 +16,7 @@
                 class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg">
                 Cerrar sesión
                 </button>
-            </div>
+            </div> --> 
 
             <nav class="flex gap-2 items-center justify-end">
                 <button
