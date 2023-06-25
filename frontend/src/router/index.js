@@ -15,24 +15,50 @@ const router = createRouter({
       path: '/reservaciones',
       name: 'appointments',
       component: AppointmentsLayout,
-      children:[
+      children: [
         {
-          path:'nueva',
-          component: () =>import('../views/appointments/NewAppointmentLayout.vue'),
-          children:[
+          path: 'nueva',
+          component: () => import('../views/appointments/NewAppointmentLayout.vue'),
+          children: [
             {
-              path:'',
+              path: '',
               name: 'new-appointment',
-              component: () =>import('../views/appointments/ServicesView.vue')
-         
+              component: () => import('../views/appointments/ServicesView.vue')
+
             },
             {
-              path:'detalles',
+              path: 'detalles',
               name: 'appointment-details',
-              component: () =>import('../views/appointments/AppointmentView.vue')
-         
+              component: () => import('../views/appointments/AppointmentView.vue')
             },
           ]
+        }
+      ]
+    },
+    //Todo lo relacionado con la autenticación 
+
+    {
+      path: '/auth',
+      name: 'auth',
+      component: () => import('../views/auth/AuthLayout.vue'),
+      children: [
+        {
+          path: 'registro',
+          name: 'register',
+          component: () => import('../views/auth/RegisterView.vue'),
+    
+        },
+        {
+          path: 'confirmar-cuenta/:token',
+          name: 'confirm-account',
+          component: () => import('../views/auth/ConfirmAccountView.vue'),
+    
+        },
+        {
+          path: 'login',
+          name: 'login',
+          component: () => import('../views/auth/LoginView.vue'),
+    
         }
       ]
     }

@@ -9,7 +9,7 @@ const register = async (req, res) => {
     }
 
 
-    const { email, name, password } = req.body
+    const { email, lastName, name, password } = req.body
 
 
     //Evitar registros duplicados 
@@ -34,8 +34,8 @@ const register = async (req, res) => {
         const user = new User(req.body)
         const result = await user.save()
 
-        const { name, email, token } = result
-        sendEmailVerification({ name, email, token })
+        const { name, lastName, email, token } = result
+        sendEmailVerification({ name, lastName, email, token })
 
 
         res.json({
@@ -61,13 +61,39 @@ const verifyAccount = async (req, res) => {
         user.verified = true
         user.token = ""
         await user.save();
-        res.json({msg: "Usuario confirmado correctamente"})
+        res.json({ msg: "Usuario confirmado correctamente" })
     } catch (error) {
         console.log(error)
     }
 }
 
+const login = async (req, res) => {
+    const { email, password } = req.body
+    //Revidar que el usuario exista
+    const user = await User.findOne({ email })
+    if (!user) {
+        const error = new Error('El usaurio no existe')
+        return res.status(401).json({ msg: error.message })
+    }
+
+    //Revisar si el usuario confirmo su cuenta
+    if (!User.verified) {
+        const error = new Error('Tu cuenta no ha sido confirmada aún')
+        return res.status(401).json({ msg: error.message })
+    }
+    //Confirmar el password
+    if (await user.checkPassword(password)) {
+        res.json({
+            msg:'Usuario autenticado'
+        })
+    } else {
+        const error = new Error('El password es incorrecto')
+        return res.status(401).json({ msg: error.message }) 
+    }
+}
+
 export {
     register,
-    verifyAccount
+    verifyAccount,
+    login
 }
