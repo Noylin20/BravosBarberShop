@@ -1,4 +1,4 @@
-import api from "../lib/axios";
+import api from '../lib/axios';
 
 export default {
     register(data){
@@ -6,5 +6,8 @@ export default {
     },
     verifyAccount(token){
        return api.get(`/auth/verify/${token}`)
+    },
+    login(data){
+        return api.post('/auth/login', data)
     }
 }

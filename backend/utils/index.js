@@ -20,10 +20,14 @@ function handleNotFoundError(message, res){
 
 //Para el token de autenticación 
 const uniqueId = () => Date.now().toString(32) + Math.random().toString(32).substring(2)
+const generateJWT =()=>{
+    console.log('desde generar JWT', id)
+}
 
 
 export {
     validateObjectID,
     handleNotFoundError,
-    uniqueId
+    uniqueId,
+    generateJWT
 }

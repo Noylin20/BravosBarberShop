@@ -1,5 +1,6 @@
 import User from '../models/User.js'
 import { sendEmailVerification } from '../emails/authEmailService.js'
+import { generateJWT } from '../utils/index.js'
 
 const register = async (req, res) => {
     //Valida todos los campos
@@ -83,6 +84,8 @@ const login = async (req, res) => {
     }
     //Confirmar el password
     if (await user.checkPassword(password)) {
+
+        generateJWT(user._id)
         res.json({
             msg:'Usuario autenticado'
         })
