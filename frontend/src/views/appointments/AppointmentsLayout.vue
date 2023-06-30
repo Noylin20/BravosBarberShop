@@ -1,4 +1,8 @@
 <script setup>
+import { RouterLink } from 'vue-router';
+import{useUserStore} from '../../stores/user';
+const user = useUserStore()
+
 </script>
 
 
@@ -9,7 +13,7 @@
         <div class="flex flex-col space-y-5">
             <!-- <div class="flex gap-2 items-center">
               deberia estar en el navBar
-                <p class="text-black text-right">Hola: Usuario</p>
+                <p class="text-black text-right">Hola: {{ user.getUsername() }}</p>
 
                 <button
                 type="button"
@@ -19,10 +23,11 @@
             </div> --> 
 
             <nav class="flex gap-2 items-center justify-end">
-                <button
+                <RouterLink
+                :to="{name:'my-appointments'}"
                 class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">
                     Mis citas
-                </button>
+                </RouterLink>
 
                 <RouterLink
                 :to="{name:'new-appointment'}"

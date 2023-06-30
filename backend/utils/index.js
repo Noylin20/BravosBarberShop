@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import jwt from 'jsonwebtoken'
 
 function validateObjectID(id, res){
     if(!mongoose.Types.ObjectId.isValid(id)){
@@ -20,8 +21,14 @@ function handleNotFoundError(message, res){
 
 //Para el token de autenticación 
 const uniqueId = () => Date.now().toString(32) + Math.random().toString(32).substring(2)
-const generateJWT =()=>{
-    console.log('desde generar JWT', id)
+
+
+const generateJWT =(id)=>{
+    const token = jwt.sign({id}, process.env.JWT_SECRET, {
+        expiresIn:'30d'})//se crea el jwt, haciendo uso del id de usuario, una llave privada creada en .env, expiración de 30 días
+    
+    
+    return token
 }
 
 

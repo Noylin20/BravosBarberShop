@@ -3,6 +3,7 @@ import { sendEmailVerification } from '../emails/authEmailService.js'
 import { generateJWT } from '../utils/index.js'
 
 const register = async (req, res) => {
+    
     //Valida todos los campos
     if (Object.values(req.body).includes('')) {
         const error = new Error('Todos los campos son obligatotios')
@@ -17,7 +18,7 @@ const register = async (req, res) => {
     const userExists = await User.findOne({ email })
     if (userExists) {
         const error = new Error('Usuario ya registrado')
-        return res.status(400).json({ msg: error.message })
+        return res.status(400).json({ msg: error.message})
 
     }
     console.log(userExists)
@@ -69,34 +70,49 @@ const verifyAccount = async (req, res) => {
 }
 
 const login = async (req, res) => {
+    
+    
     const { email, password } = req.body
     //Revidar que el usuario exista
     const user = await User.findOne({ email })
     if (!user) {
         const error = new Error('El usaurio no existe')
+        console.log("Usuario no existe")
         return res.status(401).json({ msg: error.message })
+        
     }
 
     //Revisar si el usuario confirmo su cuenta
-    if (!User.verified) {
+    if (!user.verified) {
         const error = new Error('Tu cuenta no ha sido confirmada aún')
+        console.log("Usuario sin confirmar")
         return res.status(401).json({ msg: error.message })
     }
     //Confirmar el password
     if (await user.checkPassword(password)) {
+        
+        const token= generateJWT(user._id)
+        console.log("Passworddd ")
 
-        generateJWT(user._id)
         res.json({
-            msg:'Usuario autenticado'
+            token
         })
     } else {
+        console.log("NOOO password")
         const error = new Error('El password es incorrecto')
         return res.status(401).json({ msg: error.message }) 
     }
 }
 
+const user = async (req, res)=>{
+    const {user}= req
+    res.json(
+        user
+    )
+}
 export {
     register,
     verifyAccount,
-    login
+    login,
+    user
 }
