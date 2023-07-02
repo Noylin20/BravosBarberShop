@@ -24,13 +24,12 @@ const uniqueId = () => Date.now().toString(32) + Math.random().toString(32).subs
 
 
 const generateJWT =(id)=>{
-    const token = jwt.sign({id}, process.env.JWT_SECRET, {
-        expiresIn:'30d'})//se crea el jwt, haciendo uso del id de usuario, una llave privada creada en .env, expiración de 30 días
-    
+    const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn:'30d' //expira en 30 dias 
+    })//se crea el jwt, haciendo uso del id de usuario, una llave privada creada en .env, expiración de 30 días   
     
     return token
 }
-
 
 export {
     validateObjectID,

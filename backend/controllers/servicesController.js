@@ -18,7 +18,7 @@ const createService = async (req, res) => {
         await service.save()
         //console.log(service)
         res.json({
-            msg: 'El servicio se creó correctamenta'
+            msg: 'El servicio se creó correctamente'
         })
         
     } catch (error){
@@ -68,6 +68,7 @@ const updateService = async (req, res) => {
     //escribimos en el obj los valores nuevos 
    service.name = req.body.name || service.name
    service.price = req.body.price || service.price
+   service.description = req.body.description || service.description
 
    try {
     await service.save()

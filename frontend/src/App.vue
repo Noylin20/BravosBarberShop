@@ -1,3 +1,5 @@
+
+
 <template>
   <div>
     <nav class="bg-gray-800">
@@ -5,7 +7,8 @@
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img class="h-8 w-8" src="/logo.png" alt="Logo">
+              <h1 class="text-gray-300  hover:text-white px-3 py-2 rounded-md text-sm font-medium">Bravo´s Barbería</h1>
+              <!-- <img class="h-8 w-8" src="/logo.png" alt="Logo"> -->
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
@@ -13,25 +16,31 @@
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio
                 </RouterLink>
                 <RouterLink to="/about"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acerca
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acerca de nosotros
                 </RouterLink>
                 <RouterLink to="/contact"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   Contacto</RouterLink>
+                <RouterLink to="/branch"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Sucursales</RouterLink>
+                  <RouterLink to="/services"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Servicios</RouterLink>
               </div>
             </div>
 
 
-            <div
+            <!-- <div
               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex justify-end items-center gap-2">
-              <!-- deberia estar en el navBar -->
-              <p class="text-white">Hola: Usuario</p>
+               
+              <p class="text-white">Hola: usuario</p>
 
               <button type="button"
                 class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg">
                 Cerrar sesión
               </button>
-            </div>
+            </div> -->
 
 
 

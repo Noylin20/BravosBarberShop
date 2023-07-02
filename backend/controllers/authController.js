@@ -76,7 +76,7 @@ const login = async (req, res) => {
     //Revidar que el usuario exista
     const user = await User.findOne({ email })
     if (!user) {
-        const error = new Error('El usaurio no existe')
+        const error = new Error('El usuario no existe')
         console.log("Usuario no existe")
         return res.status(401).json({ msg: error.message })
         
@@ -90,15 +90,14 @@ const login = async (req, res) => {
     }
     //Confirmar el password
     if (await user.checkPassword(password)) {
-        
-        const token= generateJWT(user._id)
+        const token = generateJWT(user._id)
+        console.log(token)
         console.log("Passworddd ")
 
         res.json({
             token
         })
     } else {
-        console.log("NOOO password")
         const error = new Error('El password es incorrecto')
         return res.status(401).json({ msg: error.message }) 
     }

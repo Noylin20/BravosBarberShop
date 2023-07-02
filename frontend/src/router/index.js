@@ -13,6 +13,31 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path:'/contact',
+      name:'contact',
+      component:()=> import('../views/Contact.vue')
+    },
+    {
+      path:'/about',
+      name:'about',
+      component:()=> import('../views/About.vue')
+    },
+    {
+      path:'/branch',
+      name:'branch',
+      component:()=> import('../views/Branch.vue')
+    },
+    {
+      path:'/seeMore',
+      name:'seeMore',
+      component:()=> import('../views/SeeMore.vue')
+    },
+    {
+      path:'/services',
+      name:'services',
+      component:()=> import('../views/Services.vue')
+    },
+    {
       path: '/reservaciones',
       name: 'appointments',
       component: AppointmentsLayout,
@@ -80,7 +105,7 @@ router.beforeEach(async (to, from, next)=>{
 
       await AuthAPI.auth()
       next()
-      
+              
     } catch (error) {
       next({name:'login'})
       console.log('++++++++++++')

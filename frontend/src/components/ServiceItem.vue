@@ -15,7 +15,7 @@ defineProps({
 <template>
    <div
    class="p-5 space-y-5 rounded-lg cursor-pointer "
-  :class="appointments.isServiceSelected(service._id) ? 'bg-blue-500 text-white': 'bg-green-500'"
+  :class="appointments.isServiceSelected(service._id) ? 'bg-blue-500 text-white': 'bg-light-gray-500'"
    @click="appointments.onServiceSelected(service)"
    >
    
@@ -28,3 +28,8 @@ defineProps({
 </div>
    
 </template>
+<style>
+.bg-light-gray-500 {
+  background-color: #dbd9d9; /* Ajusta el valor del color según tu preferencia */
+}
+</style>

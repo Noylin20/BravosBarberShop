@@ -12,11 +12,14 @@
       //console.log(formData)
 
      const{data:{token}}= await AuthAPI.login(formData)
+     //console.log(token)
      localStorage.setItem('AUTH_TOKEN', token)
      router.push({name: 'my-appointments'})
     }catch (error){
-      message: error.response.data.msg
-      type: 'error'
+      toast.open({
+            message: error.response.data.msg,
+            type: 'error'
+      })
     }
   }
 

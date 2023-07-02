@@ -2,9 +2,10 @@ import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
 
 const authMiddleware = async(req, res, next)=>{
-
+   
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
-        console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqq')//-------------
+        console.log(req.headers.authorization)
+        console.log('Si hay token')
         try {
             const token = req.headers.authorization.split(' ')[1]
             
@@ -18,13 +19,13 @@ const authMiddleware = async(req, res, next)=>{
         } catch{
             const error= new Error('Token no válido o inexistente')
              res.status(403).json({msg: error.message})
-             console.log('bbbbbbbbbbbbbbbb')
+             console.log('Token no válido')
         }
         
     }else{
         const error= new Error('Token no válido o inexistente')
         res.status(403).json({msg: error.message})
-        console.log('aaaaaaaaaaaaaaaaaaaaaa')
+        //console.log('Desde authmiddleware')
     }
 }
 
