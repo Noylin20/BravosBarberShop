@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 
 import AppointmentsLayout from '../views/appointments/AppointmentsLayout.vue'
 import AuthAPI from '../api/AuthAPI'
+import ServicesLayout from '../views/servicesManagement/ServicesLayout.vue'
 
 
 const router = createRouter({
@@ -94,7 +95,25 @@ const router = createRouter({
     
         }
       ]
-    }
+    },
+        //Vistas de los servicios para los administradores 
+        {
+          path: '/servicesManagement',
+          name: 'servicesM',
+          component: () => ServicesLayout,
+          children: [
+            {
+              path: '',
+              name: 'services-list',
+              component: () => import('../views/servicesManagement/ExistingServices.vue'),
+            },
+            {
+              path:'',
+              name:'create-service',
+              component: () => import('../views/servicesManagement/ServiceView.vue'),
+            }
+          ]
+        }
 
   ]
 })

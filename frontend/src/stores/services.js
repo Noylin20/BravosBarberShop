@@ -6,6 +6,10 @@ export const useServicesStore = defineStore('services', () =>{
     
 const services = ref([])
 
+    const name = ref('')
+    const description = ref('')
+    const price = ref(0)
+
    onMounted(async () =>{
         try {
             const {data} = await ServicesAPI.all()
@@ -13,10 +17,22 @@ const services = ref([])
         } catch (error) {
         console.log(error) 
         }
-    }) 
+    });
+
+    function createService() {
+        const service = {
+            name: name.value,
+            description: description.value,
+            price: price.value
+        }
+        console.log(service)
+    }
     
     return{
-        services
-
+        services,
+        name,
+        description,
+        price,
+        createService
     }
 })

@@ -9,6 +9,8 @@ import config from '../formkit.config'
 import App from './App.vue'
 import router from './router'
 import "vue-toast-notification/dist/theme-bootstrap.css"
+import 'bootstrap'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const $toast = useToast({

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import colors from 'colors'
+import error from 'error'
 
 
 //conexión a la BD
