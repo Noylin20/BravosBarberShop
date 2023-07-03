@@ -1,4 +1,8 @@
+<script setup>
+import { useUserStore } from './stores/user';
 
+const user = useUserStore();
+</script>
 
 <template>
   <div>
@@ -16,7 +20,8 @@
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio
                 </RouterLink>
                 <RouterLink to="/about"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acerca de nosotros
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acerca
+                  de nosotros
                 </RouterLink>
                 <RouterLink to="/contact"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -24,26 +29,28 @@
                 <RouterLink to="/branch"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   Sucursales</RouterLink>
-                  <RouterLink to="/services"
+                <RouterLink to="/services"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                   Servicios</RouterLink>
+                <RouterLink to="/reservaciones"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  Mis citas</RouterLink>
               </div>
             </div>
 
-
-            <!-- <div
-              class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex justify-end items-center gap-2">
-               
-              <p class="text-white">Hola: usuario</p>
-
-              <button type="button"
-                class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg">
-                Cerrar sesión
-              </button>
-            </div> -->
-
-
-
+             <!-- Esto debe aparecer y desaparecer -->
+      <!-- Bloque de código para mostrar el nombre del usuario y el botón de cerrar sesión -->
+      <!-- <div class="flex gap-2 items-center" v-if="user.isLoggedIn">
+        <p class="text-white text-right">Hola: {{ user.getUserName }}</p>
+        <button
+          type="button"
+          class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg"
+          @click="user.logout"
+        >
+          Cerrar sesión
+        </button>
+      </div> -->
+            <!-- Fin del bloque de código para mostrar el nombre del usuario y el botón de cerrar sesión -->
 
           </div>
         </div>

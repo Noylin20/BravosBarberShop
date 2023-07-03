@@ -12,12 +12,13 @@ const user = useUserStore()
         <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1>
         <div class="flex flex-col space-y-5">
             <div class="flex gap-2 items-center">
-              deberia estar en el navBar
-                <p class="text-black text-right">Hola: {{ user.getUsername() }}</p>
+             
+                <p class="text-black text-right">Hola: {{ user.getUserName }}</p>
 
                 <button
                 type="button"
-                class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg">
+                class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg"
+                @click="user.logout">
                 Cerrar sesión
                 </button>
             </div> 
