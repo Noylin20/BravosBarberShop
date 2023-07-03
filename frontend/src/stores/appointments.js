@@ -1,6 +1,8 @@
-import { ref, computed, onMounted } from 'vue'  //Se importan los servicios que el cliente quiere contratar
-
+import { ref, computed, onMounted, inject } from 'vue'  //Se importan los servicios que el cliente quiere contratar
 import { defineStore } from 'pinia'
+import{ useRouter } from 'vue-router'
+import AppointmentAPI from '../api/AppointmentAPI'
+import { convertToISO } from '../helpers/date'
 
 export const useAppointmentsStore = defineStore('appointments', ()=>{
     
@@ -8,6 +10,9 @@ export const useAppointmentsStore = defineStore('appointments', ()=>{
     const date = ref('') //para guardar la fecha 
     const hours = ref([])
     const time = ref('[]')
+
+    const toast = inject('toast')
+    const router = useRouter()
 
     onMounted(() => {
         const starHour = 10;
@@ -21,14 +26,37 @@ export const useAppointmentsStore = defineStore('appointments', ()=>{
       });
       
 
-    function createAppointment() {
+    async function createAppointment() {
        const appointment = {
         services: services.value.map(service => service._id),
-        date: date.value,
+        date: convertToISO(date.value),
         time: time.value, 
         totalAmount: totalAmount.value 
        }
-       console.log(appointment)
+       
+       
+       try {
+        const{ data } =await AppointmentAPI.create(appointment)//pasamos los datos de la cita
+       toast.open({
+            message: data.msg,
+            type: 'success'
+         })
+         router.push({name: 'my-appointments'})
+         clearAppointmentData()
+         
+       } catch (error) {
+        console.log(error)
+       }
+       
+       
+
+    }
+
+    function clearAppointmentData(){//reinicia los servicios y elecciones después de elegir una cita y volver a generar una nueva
+        services.value=[]
+        data.value=''
+        time.value= ''
+
     }
 
     function onServiceSelected(service){

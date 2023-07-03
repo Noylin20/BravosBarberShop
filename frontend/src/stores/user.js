@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user', () => {
   onMounted(async () => {
     try {
       const { data } = await AuthAPI.auth();
-      user.value = data;
+      user.value = data
       isLoggedIn.value = true; // Actualizar el estado de isLoggedIn a true
     } catch (error) {
       console.log(error);
