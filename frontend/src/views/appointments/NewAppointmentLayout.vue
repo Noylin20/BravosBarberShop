@@ -2,14 +2,20 @@
 
 <script setup>
 
+import { onMounted } from 'vue';
 import {useRoute} from 'vue-router'
+import { useAppointmentsStore } from '../../stores/appointments';
+
+const appointments = useAppointmentsStore()
 const route = useRoute()
 
+onMounted(()=>{
+   appointments.clearAppointmentData()
+})
 </script>
 
 
 <template>
-   <h1>New Appointment Layout</h1>
    <nav class="my-5 flex gap-3">
       <RouterLink
          :to="{name: 'new-appointment'}"

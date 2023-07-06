@@ -1,9 +1,15 @@
-import { RouterLink } from 'vue-router';
+
+
 
 <script setup>
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
 const authRoutes = [
     { name: 'register', text: 'Crear una cuenta' },
-    { name: 'login', text: 'Iniciar sesión' }
+    { name: 'login', text: 'Iniciar sesión' },
+    { name: 'forgot-password', text: 'Oilvide mi contraseña' }
 ]
 </script>
 
@@ -17,6 +23,7 @@ const authRoutes = [
             v-for="authRoute in authRoutes"
             class="uppercase font-bold text-black"
             :to = "{name:authRoute.name}"
+            :class="{'hidden': route.name === authRoute.name}"
            >{{ authRoute.text }}</RouterLink>
         </nav>
     </div>

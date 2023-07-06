@@ -15,40 +15,54 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path:'/contact',
-      name:'contact',
-      component:()=> import('../views/Contact.vue')
+      path: '/admin',
+      name: 'admin',
+      component: () => import('../views/admin/AdminLayout.vue'),
+      meta: { requiresAdmin: true },
+      children: [
+        {
+          path: '',
+          name: 'admin-appointments',
+          component: () => import('../views/admin/AppointmentsView.vue'),
+
+        }
+      ]
     },
     {
-      path:'/about',
-      name:'about',
-      component:()=> import('../views/About.vue')
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/Contact.vue')
     },
     {
-      path:'/branch',
-      name:'branch',
-      component:()=> import('../views/Branch.vue')
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/About.vue')
     },
     {
-      path:'/seeMore',
-      name:'seeMore',
-      component:()=> import('../views/SeeMore.vue')
+      path: '/branch',
+      name: 'branch',
+      component: () => import('../views/Branch.vue')
     },
     {
-      path:'/services',
-      name:'services',
-      component:()=> import('../views/Services.vue')
+      path: '/seeMore',
+      name: 'seeMore',
+      component: () => import('../views/SeeMore.vue')
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: () => import('../views/Services.vue')
     },
     {
       path: '/reservaciones',
       name: 'appointments',
       component: AppointmentsLayout,
-      meta:{requiresAuth:true},
+      meta: { requiresAuth: true },
       children: [
         {
-          path:'',
-          name:'my-appointments',
-          component:()=> import('../views/appointments/MyAppointmentsView.vue')
+          path: '',
+          name: 'my-appointments',
+          component: () => import('../views/appointments/MyAppointmentsView.vue')
         },
         {
           path: 'nueva',
@@ -66,6 +80,23 @@ const router = createRouter({
               component: () => import('../views/appointments/AppointmentView.vue')
             },
           ]
+        },
+        {
+          path: ':id/editar',
+          component: () => import('../views/appointments/EditAppoinmentLayout.vue'),
+          children: [
+            {
+              path: '',
+              name: 'edit-appointment',
+              component: () => import('../views/appointments/ServicesView.vue')
+
+            },
+            {
+              path: 'detalles',
+              name: 'edit-appointment-details',
+              component: () => import('../views/appointments/AppointmentView.vue')
+            },
+          ]
         }
       ]
     },
@@ -80,60 +111,94 @@ const router = createRouter({
           path: 'registro',
           name: 'register',
           component: () => import('../views/auth/RegisterView.vue'),
-    
+
         },
         {
           path: 'confirmar-cuenta/:token',
           name: 'confirm-account',
           component: () => import('../views/auth/ConfirmAccountView.vue'),
-    
+
         },
         {
           path: 'login',
           name: 'login',
           component: () => import('../views/auth/LoginView.vue'),
-    
+
+        },
+        {
+          path: 'olvide-password',
+          name: 'forgot-password',
+          component: () => import('../views/auth/ForgotPasswordView.vue'),
+
+        },
+        {
+          path: 'olvide-password/:token',
+          name: 'new-password',
+          component: () => import('../views/auth/NewPasswordView.vue'),
+
         }
       ]
     },
-        //Vistas de los servicios para los administradores 
+    //Vistas de los servicios para los administradores 
+    {
+      path: '/servicesManagement',
+      name: 'servicesM',
+      component: () => ServicesLayout,
+      children: [
         {
-          path: '/servicesManagement',
-          name: 'servicesM',
-          component: () => ServicesLayout,
-          children: [
-            {
-              path: '',
-              name: 'services-list',
-              component: () => import('../views/servicesManagement/ExistingServices.vue'),
-            },
-            {
-              path:'',
-              name:'create-service',
-              component: () => import('../views/servicesManagement/ServiceView.vue'),
-            }
-          ]
+          path: '',
+          name: 'services-list',
+          component: () => import('../views/servicesManagement/ExistingServices.vue'),
+        },
+        {
+          path: '',
+          name: 'create-service',
+          component: () => import('../views/servicesManagement/ServiceView.vue'),
         }
+      ]
+    }
 
   ]
 })
 
+
+//Maneja logica de autenticación y rol del usuario 
 router.beforeEach(async (to, from, next) => {
   const requiresAuth = to.matched.some(url => url.meta.requiresAuth);
-  
+
   if (requiresAuth) {
-   // console.log('requiresAuth' + AuthAPI.auth())
+    // console.log('requiresAuth' + AuthAPI.auth())
 
     try {
-      await AuthAPI.auth();
-      next();
+      const { data } = await AuthAPI.auth();
+      if (data.admin) {
+        next({ name: 'admin' })
+      } else {
+        next()
+      }
     } catch (error) {
-      next({ name: 'login' });
-      console.log('++++++++++++');
+      next({ name: 'login' })
     }
   } else {
-    next();
+    next()
   }
 });//antes de mostrar información, verificar que se inició sesión
+
+//Previene el acceso hacia el panel de administrador 
+router.beforeEach(async (to, from, next) => {
+  const requiresAdmin = to.matched.some(url => url.meta.requiresAdmin);
+
+  if (requiresAdmin) {
+    try {
+      await AuthAPI.admin()
+      next()
+    } catch (error) {
+      next({ name: 'login' })
+    }
+
+  } else {
+    next()
+  }
+});
 
 export default router

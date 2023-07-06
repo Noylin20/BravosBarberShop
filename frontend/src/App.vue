@@ -16,9 +16,9 @@ const user = useUserStore();
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <RouterLink to="/"
+                <!-- <RouterLink to="/"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio
-                </RouterLink>
+                </RouterLink> -->
                 <RouterLink to="/about"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acerca
                   de nosotros
@@ -38,18 +38,16 @@ const user = useUserStore();
               </div>
             </div>
 
-             <!-- Esto debe aparecer y desaparecer -->
-      <!-- Bloque de código para mostrar el nombre del usuario y el botón de cerrar sesión -->
-      <!-- <div class="flex gap-2 items-center" v-if="user.isLoggedIn">
-        <p class="text-white text-right">Hola: {{ user.getUserName }}</p>
-        <button
-          type="button"
-          class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg"
-          @click="user.logout"
-        >
-          Cerrar sesión
-        </button>
-      </div> -->
+
+            <!-- Esto debe aparecer y desaparecer -->
+            <!-- Bloque de código para mostrar el nombre del usuario y el botón de cerrar sesión -->
+           
+              <!-- <p class="text-white items-2 text-right">Hola: {{ user.getUserName }}</p>
+              <button type="button"
+                class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg"
+                @click="user.logout">
+                Cerrar sesión
+              </button> -->
             <!-- Fin del bloque de código para mostrar el nombre del usuario y el botón de cerrar sesión -->
 
           </div>

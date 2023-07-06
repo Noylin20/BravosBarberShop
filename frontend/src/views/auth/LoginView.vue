@@ -11,9 +11,7 @@ const handleSubmit = async (formData) => {
   //el usuario inicia sesión, almacena el token y se redirige a sus citas
   try {
     const { data: { token } } = await AuthAPI.login(formData)
-     console.log("DATAAAAA" +  token )
     localStorage.setItem('AUTH_TOKEN', token)
-    console.log('estoy almacenando el token' + token)
     router.push({ name: 'my-appointments' })
   } catch (error) {
     toast.open({

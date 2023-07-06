@@ -6,7 +6,7 @@ import {db} from './config/db.js'
 import servicesRoutes from './routes/servicesRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import appointmentRoutes from './routes/appointmentRoutes.js'
-
+import userRoutes from './routes/userRoutes.js'
 //variables de entorno 
 dotenv.config()
 
@@ -64,6 +64,7 @@ app.use(cors(corsOptions))
 app.use('/api/services',servicesRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/appointments',appointmentRoutes)
+app.use('/api/users',userRoutes)
 
 
 //definir puerto
