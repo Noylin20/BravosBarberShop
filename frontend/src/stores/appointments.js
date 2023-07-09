@@ -29,6 +29,7 @@ export const useAppointmentsStore = defineStore('appointments', () => {
         }
     })
 
+    
     watch(date, async () => {
         time.value = ''
 

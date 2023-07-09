@@ -25,6 +25,18 @@ const router = createRouter({
           name: 'admin-appointments',
           component: () => import('../views/admin/AppointmentsView.vue'),
 
+        },
+        {
+          path: '',
+          name: 'admin-createBarber',
+          component: () => import('../views/admin/NewBarberView.vue'),
+
+        },
+        {
+          path: '',
+          name: 'admin-listBarber',
+          component: () => import('../views/admin/AdminUserListView.vue'),
+
         }
       ]
     },
@@ -100,6 +112,10 @@ const router = createRouter({
         }
       ]
     },
+
+
+
+    ///
     //Todo lo relacionado con la autenticación 
 
     {

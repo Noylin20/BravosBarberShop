@@ -9,9 +9,10 @@ const user = useUserStore()
 <template>
     <div class="flex justify-between">
 
-        <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1>
-        <div class="flex flex-col space-y-5">
+        <!-- <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1> -->
+       <!-- <div class="flex justify-end"> <div class="flex flex-col space-y-5">
             <div class="flex gap-2 items-center">
+               
 
                 <p class="text-black text-right">Hola: {{ user.getUserName }}</p>
 
@@ -20,11 +21,11 @@ const user = useUserStore()
                     @click="user.logout">
                     Cerrar sesión
                 </button>
-            </div>
+            </div></div>
 
 
 
-        </div>
+        </div> -->
     </div>
     <main class="space-v-6">
 

@@ -1,5 +1,5 @@
 <script setup>
-import AdminAppointment from '../../components/AdminAppointment.vue';
+import AdminUser from '../../components/AdminUser.vue';
 import { useUserStore } from '../../stores/user'
 
 const user = useUserStore()
@@ -10,7 +10,7 @@ const user = useUserStore()
 <template>
     <p class="text-black text-lg mt-5">
 
-        A continuación podras administrar tus próximas citas
+        Lista de barberos 
     </p>
     <p v-if="user.loading" class="text-black text-2xl text-center mt-4">
         Cargando...
@@ -26,16 +26,16 @@ const user = useUserStore()
                 </RouterLink>
             </div>
             <div class="mr-4">
-                <RouterLink :to="{ name: 'admin-listBarber' }" style="border: 1px solid; border-color: blue;"
+                <RouterLink :to="{ name: 'admin-appointments' }" style="border: 1px solid; border-color: blue;"
                     class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">
-                    Lista de barberos
+                    Regresar
                 </RouterLink>
             </div>
 
         </div>
         <div class="grid grid-cols-1 gap-5 mt-10">
-            <AdminAppointment v-for="appointment in user.userAppointments" :key="appointment._id"
-                :appointment="appointment" />
+            <AdminUser v-for="user in user.getUserAdmin" :key="user._id"
+                :user="user" />
         </div>
     </div>
 </template>

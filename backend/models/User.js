@@ -38,6 +38,16 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false //usuario es el cliente, pero al cambiar a true pasa a ser admin 
     },
+    schedule: {
+        inicio: {
+            type: String,
+            default: ''
+        },
+        salida: {
+            type: String,
+            default: ''
+        }
+    }
 })
 
 //Para hashear el password

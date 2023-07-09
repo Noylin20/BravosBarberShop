@@ -7,11 +7,14 @@ const user = useUserStore()
 
 
 <template>
+
+    
     <div class="flex justify-between">
     
         <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1>
         <div class="flex flex-col space-y-5">
-            <div class="flex gap-2 items-center">
+            <!-- <div class="flex gap-2 items-center">
+                <div class="flex justify-end">
              
                 <p class="text-black text-right">Hola: {{ user.getUserName }}</p>
 
@@ -21,9 +24,9 @@ const user = useUserStore()
                 @click="user.logout">
                 Cerrar sesión
                 </button>
-            </div> 
+            </div> </div> -->
 
-            <nav class="flex gap-2 items-center justify-end">
+             <nav class="flex gap-2 items-center justify-end">
                 <RouterLink
                 :to="{name:'my-appointments'}"
                 class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">

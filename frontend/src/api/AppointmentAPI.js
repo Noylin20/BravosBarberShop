@@ -19,6 +19,11 @@ export default{
     },
     delete(id){
         return api.delete(`/appointments/${id}`)
-    }
+    },
+    getUserAdmin(userId){
+        return api.get(`/users/${userId}/admin`)
+    },
 
+
+    
 }

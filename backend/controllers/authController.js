@@ -11,7 +11,9 @@ const register = async (req, res) => {
     }
 
 
-    const { email, lastName, name, password } = req.body
+    const { email, lastName, name, password, validateAdmin, horarioE, horarioS } = req.body
+
+    console.log('mi validacion' + validateAdmin)
 
 
     //Evitar registros duplicados 
@@ -21,6 +23,8 @@ const register = async (req, res) => {
         return res.status(400).json({ msg: error.message })
 
     }
+
+     
     console.log(userExists)
 
     //Validar la extensión del password
@@ -34,7 +38,20 @@ const register = async (req, res) => {
 
     try {
         const user = new User(req.body)
-        const result = await user.save()
+       const result = await user.save()
+       console.log('????' + validateAdmin)
+
+
+       //Verificamos si es un admin quien esta creando el usuario como admin (nuevo barbero)
+        if (validateAdmin) {
+            console.log('antes' + user.admin)
+            user.admin = true; // Establecer usuario admin como true
+            user.schedule.inicio = horarioE
+            user.schedule.salida = horarioS
+
+            console.log( 'desp' + user.admin)
+           await user.save(); // Guardar el usuario actualizado
+        }
 
         const { name, lastName, email, token } = result
         sendEmailVerification({ name, lastName, email, token })
