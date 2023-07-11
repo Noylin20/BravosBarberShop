@@ -24,12 +24,14 @@ const toggleDetails = () => {
   >
     <p class="text-lg font-medium">{{ service.name }}</p>
     <p class="text-xl font-bold">{{ formatCurrency(service.price) }}</p>
+    <p class="text-l font-bold">{{service.duration }} minutos</p>
     
     <!-- <button @click="toggleDetails" class="bg-blue-500 text-white px-3 py-1 rounded">Ver más</button> -->
     
     <div class="mt-2">
       <p class="text-sm"> {{ service.description }}</p>
     </div>
+
   </div>
 </template>
 

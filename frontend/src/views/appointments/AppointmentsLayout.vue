@@ -29,13 +29,13 @@ const user = useUserStore()
              <nav class="flex gap-2 items-center justify-end">
                 <RouterLink
                 :to="{name:'my-appointments'}"
-                class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">
+                class="p-2 text-black-200 uppercase text-xs font-black rounded-lg bg-blue-300">
                     Mis citas
                 </RouterLink>
 
                 <RouterLink
                 :to="{name:'new-appointment'}"
-                class="p-2 text-black-200 uppercase text-xs font-black rounded-lg bg-blue-700">
+                class="p-2 text-black-200 uppercase text-xs font-black rounded-lg bg-blue-300">
                 Nueva cita</RouterLink>
 
             </nav>

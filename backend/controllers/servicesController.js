@@ -17,7 +17,7 @@ const createService = async (req, res) => {
         const service = new Services(req.body)
         await service.save()
         //console.log(service)
-        res.json({
+        res.json({ 
             msg: 'El servicio se creó correctamente'
         })
         
@@ -69,6 +69,7 @@ const updateService = async (req, res) => {
    service.name = req.body.name || service.name
    service.price = req.body.price || service.price
    service.description = req.body.description || service.description
+   service.duration = req.body.duration || service.duration
 
    try {
     await service.save()

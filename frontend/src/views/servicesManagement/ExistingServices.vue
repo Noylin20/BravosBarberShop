@@ -18,6 +18,7 @@ const services = useServicesStore()
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Precio</th>
+                        <th scope="col">Duración</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,7 @@ const services = useServicesStore()
                         <td contenteditable="true">{{ service.name }}</td>
                         <td contenteditable="true" style="height: 70px;">{{ service.description }}</td>
                         <td contenteditable="true">{{ service.price }}</td>
+                        <td contenteditable="true">{{ service.duration }}</td>
                         <td style="width: 10%;"><button type="button" class="btn btn-outline-danger"
                             @click="services.deleteService(service._id)">Delete</button></td>
                     </tr>

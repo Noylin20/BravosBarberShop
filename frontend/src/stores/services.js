@@ -11,6 +11,7 @@ const services = ref([])
     const name = ref('')
     const description = ref('')
     const price = ref('')
+    const duration = ref('')
 
     const toast = inject('toast')
     const router = useRouter()
@@ -71,6 +72,7 @@ const services = ref([])
         name,
         description,
         price,
+        duration,
         createService,
         deleteService
     }

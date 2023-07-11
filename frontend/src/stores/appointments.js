@@ -13,21 +13,43 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     const hours = ref([])
     const time = ref('')
     const appointmentsByDate = ref([])
+    const totalTime = ref([])
+
 
     const toast = inject('toast')
     const router = useRouter()
     const user = useUserStore()
+    
+
+    // onMounted(() => {
+    //     const starHour = 10;
+    //     const endHour = 19;
+
+    //     for (let hour = starHour; hour <= endHour; hour++) {
+    //         let format = (hour < 12) ? 'am' : 'pm';
+    //         let hourFormatted = (hour <= 12) ? hour : hour - 12;
+    //         hours.value.push(hourFormatted + ':00 ' + format);
+    //     }
+    // })
 
     onMounted(() => {
-        const starHour = 10;
+        const startHour = 10;
         const endHour = 19;
-
-        for (let hour = starHour; hour <= endHour; hour++) {
-            let format = (hour < 12) ? 'am' : 'pm';
-            let hourFormatted = (hour <= 12) ? hour : hour - 12;
-            hours.value.push(hourFormatted + ':00 ' + format);
+      
+        for (let hour = startHour; hour <= endHour; hour++) {
+          for (let minute = 0; minute < 60; minute += 15) {
+            const format = (hour < 12) ? 'am' : 'pm';
+            const hourFormatted = (hour <= 12) ? hour : hour - 12;
+            const timeFormatted = hourFormatted + ':' + ('0' + minute).slice(-2) + ' ' + format;
+            hours.value.push(timeFormatted);
+          }
         }
-    })
+
+        // for(let i = 0; i<= appointment.value.length(); i++){
+
+        // } -----------------guardar las duraciones
+      });
+      
 
     
     watch(date, async () => {
@@ -158,6 +180,7 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     const totalAmount = computed(() => {
         return services.value.reduce((total, service) => total + service.price, 0)
     })
+
 
     const isValidReservation = computed(() => {
         return services.value.length && date.value.length && time.value.length

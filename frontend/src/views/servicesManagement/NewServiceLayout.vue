@@ -48,6 +48,16 @@ const handleSubmit = async ({ ...formData }) => {
                 <FormKit type="number" name="price" placeholder="Precio establecido al servicio" validation="required" :validation-messages="{
                   required: 'El precio es obligatorio'
                 }" />
+            
+              </th>
+            </tr>
+            <tr>
+              <th style="position: relative; bottom: 50px;">
+                <label>Precio:</label>
+                <FormKit type="number" name="duration" placeholder="Duración establecida al servicio" validation="required" :validation-messages="{
+                  required: 'La duración del servicio es obligatoria'
+                }" />
+            
               </th>
             </tr>
           </tbody>

@@ -55,7 +55,7 @@
                         v-model="appointments.date"
                     />
                 </div>
-                <div v-if="appointments.isDateSelected" class="flex-1 grid grid-cols-1 xl:grid-cols-2 gap-5 mt-10 lg:mt-0">
+                <div v-if="appointments.isDateSelected" class="flex-2 grid grid-cols-2 xl:grid-cols-4 gap-3 mt-8 lg:mt-0">
                     <button v-for="hour in appointments.hours" 
                     class="block text-blue-500 rounded-lg text-xl font-black p-1 disabled:opacity-10" 
                     style="border: 2px solid gray;"
