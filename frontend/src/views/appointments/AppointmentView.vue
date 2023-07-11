@@ -1,83 +1,119 @@
 <script setup>
-    import {ref} from 'vue'
-    import VueTailwindDatepicker from 'vue-tailwind-datepicker'
-    import SelectedServices from '../../components/SelectedServices.vue';
-    import { formatCurrency } from '../../helpers';
-    import { useAppointmentsStore } from '../../stores/appointments';
+import { ref, computed } from 'vue'
+import VueTailwindDatepicker from 'vue-tailwind-datepicker'
+import SelectedServices from '../../components/SelectedServices.vue';
+import { formatCurrency } from '../../helpers';
+import { useAppointmentsStore } from '../../stores/appointments';
 
-    const appointments = useAppointmentsStore()
+const appointments = useAppointmentsStore()
 
-    const formatter = ref({
-        date: 'DD/MM/YYYY',
-        month:'MMM'
-    })
+const formatter = ref({
+    date: 'DD/MM/YYYY',
+    month: 'MMM'
+})
 
-    //desabilita fechas anteriores 
-    const disableDate = (date) => {
-        const today = new Date()
-        return date < today || date.getMonth() > today.getMonth() + 1
-        //|| [0,6].includes(date.getDay()) para desabilitar fines de semana 
 
+
+// Deshabilita fechas anteriores 
+const disableDate = (date) => {
+    const today = new Date()
+    return date < today || date.getMonth() > today.getMonth() + 1
+    //|| [0,6].includes(date.getDay()) para deshabilitar fines de semana 
+}
+
+const barbers = ref([
+  { _id: '64a255030f365ff57693a25b', name: 'Juan Moya', entryTime: '09:00', exitTime: '11:00' },
+  { _id: '64ada381e123f4228ee57bc3', name: 'Manuel Perez', entryTime: '12:00', exitTime: '14:00' }
+])
+
+const selectedBarber = ref(null)
+
+const availableHours = computed(() => {
+  const hours = []
+
+  if (selectedBarber.value) {
+    const entryTime = new Date(`01/01/2023 ${selectedBarber.value.entryTime}`)
+    const exitTime = new Date(`01/01/2023 ${selectedBarber.value.exitTime}`)
+
+    let currentHour = entryTime
+    while (currentHour <= exitTime) {
+      hours.push(currentHour.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }))
+      currentHour.setMinutes(currentHour.getMinutes() + 15)
     }
+  }
+
+  return hours
+})
+
+
 
 
 </script>
 
-
 <template>
-        <h2 class="text-4xl font-extrabold text-black">Detalles y resumen de la cita</h2>
-        <p class="text-black text-lg">A continuación verifica la información y confirma tu cita</p>
+    <!-- <h2 class="text-4xl font-extrabold text-black">Detalles y resumen de la cita</h2> -->
+    <p class="text-black text-lg">A continuación verifica la información y confirma tu cita</p>
 
-        <h3 class="text-3xl font-extrabold text-black">Servicios</h3>
+    <h3 class="text-2xl font-extrabold text-black">Servicios seleccionados</h3>
 
-        <p v-if="appointments.noServicesSelected" class="text-black text-2xl">No hay servicios seleccionados</p>
-       
-        <div v-else class="grid gap 5">
-            <SelectedServices
-            v-for="service in appointments.services"
-            :key="service._id"
-            :service="service"/>
-            <p class="text-right text-black text-2xl">Total a pagar: 
-                <span class="font-black">{{ formatCurrency(appointments.totalAmount) }}</span>
-            </p>
+    <p v-if="appointments.noServicesSelected" class="text-black text-2xl">No hay servicios seleccionados</p>
+
+    <div v-else class="grid gap-1 p-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-2">
+            <SelectedServices v-for="service in appointments.services" :key="service._id" :service="service"
+                class="col-span-1 text-sm" />
+
         </div>
-
-        <div class="space-y-8" v-if="!appointments.noServicesSelected">
-            <h3 class="text-3xl font-extrabold text-black">Fecha y hora</h3>
-            <div class="lg:flex gap-5 items-start">
-                <div class="w-full lg:w-96 bg-white flex justify-center rounded-lg">
-                    <VueTailwindDatepicker
-                        :disable-date="disableDate"
-                        i18n="es-cr"
-                        as-single
-                        no-input
-                        :formatter = "formatter"
-                        v-model="appointments.date"
-                    />
-                </div>
-                <div v-if="appointments.isDateSelected" class="flex-2 grid grid-cols-2 xl:grid-cols-4 gap-3 mt-8 lg:mt-0">
-                    <button v-for="hour in appointments.hours" 
-                    class="block text-blue-500 rounded-lg text-xl font-black p-1 disabled:opacity-10" 
-                    style="border: 2px solid gray;"
-                    :class="appointments.time === hour ? 'bg-blue-500 text-white' : 'bg-white'"
-                    @click="appointments.time = hour"
-                    :disabled="appointments.disableTime(hour) ? true : false"
-                    >
-                        {{ hour }} 
-                    </button>
-
+        <div class="flex justify-end mt-2">
+            <div class="text-gray-700 text-lg font-bold mr-2">
+                Total a pagar:
+            </div>
+            <div class="flex items-center">
+                <div class="text-sm font-bold text-sm-gray-900">
+                    {{ formatCurrency(appointments.totalAmount) }}
                 </div>
             </div>
-            <div v-if ="appointments.isValidReservation" class="flex justify-end">
-                <button class = "w-full md:w-auto bg-blue-500 p-3 rounded-lg uppercase font-black text-white"
-                @click="appointments.saveAppointment"
-                >
-                    Confirmar cita
+        </div>
+    </div>
+
+    <!-- <div v-if="appointments.isDateSelected" class="flex justify-start mt-4"> -->
+    <div v-if="appointments.isDateSelected" class="flex justify-start mt-4">
+        <div class="text-gray-700 text-base font-bold mr-2">
+            Barbero:
+        </div>
+        <div>
+            <select v-model="selectedBarber" class="border border-gray-300 rounded-md px-3 py-2">
+                <option disabled value="">Seleccionar barbero</option>
+                <option v-for="barber in barbers" :key="barber._id" :value="barber">{{ barber.name }}</option>
+            </select>
+        </div>
+        <!-- </div> -->
+    </div>
+
+    <div class="space-y-8" v-if="!appointments.noServicesSelected">
+        <h3 class="text-3xl font-extrabold text-black">Fecha y hora</h3>
+        <div class="lg:flex gap-5 items-start">
+            <div class="w-full lg:w-96 bg-white flex justify-center rounded-lg">
+                <VueTailwindDatepicker :disable-date="disableDate" i18n="es-cr" as-single no-input :formatter="formatter"
+                    v-model="appointments.date" />
+            </div>
+            <div v-if="appointments.isDateSelected" class="flex-2 grid grid-cols-2 xl:grid-cols-4 gap-3 mt-8 lg:mt-0">
+                <button v-for="hour in availableHours"
+                    class="block text-blue-500 rounded-lg text-xl font-black p-1 disabled:opacity-10"
+                    style="border: 2px solid gray;"
+                    :class="appointments.time === hour ? 'bg-blue-500 text-white' : 'bg-white'"
+                    @click="appointments.time = hour" :disabled="appointments.disableTime(hour) ? true : false">
+                    {{ hour }}
                 </button>
             </div>
         </div>
 
-  
-
-  
+        <div v-if="appointments.isValidReservation" class="flex justify-end">
+            <button class="w-full md:w-auto bg-blue-500 p-3 rounded-lg uppercase font-black text-white"
+                @click="appointments.saveAppointment">
+                Confirmar cita
+            </button>
+        </div>
+    </div>
 </template>
+

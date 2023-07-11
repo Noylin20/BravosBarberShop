@@ -20,6 +20,10 @@ const appointmentSchema = mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    }, 
+    barber:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 
 })

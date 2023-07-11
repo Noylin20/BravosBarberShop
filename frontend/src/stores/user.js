@@ -3,11 +3,13 @@ import { defineStore } from 'pinia';
 import { useRouter } from 'vue-router';
 import AuthAPI from '../api/AuthAPI';
 import AppointmentAPI from '../api/AppointmentAPI';
+import UserAPI from '../api/UserAPI';
 
 export const useUserStore = defineStore('user', () => {
   const router = useRouter();
   const user = ref({});
   const userAppointments = ref([])
+  const userAdmins = ref([])
   const loading = ref(true)
   const isLoggedIn = ref(false); // Agregar propiedad isLoggedIn
   
@@ -18,7 +20,9 @@ export const useUserStore = defineStore('user', () => {
       const { data } = await AuthAPI.auth();
       user.value = data;
       await getUserAppointments();
+      await getUser();
       isLoggedIn.value = true; // Actualizar el estado de isLoggedIn a true
+      console.log(isLoggedIn)
   
       // if (!isPageLoaded.value) {
       //   isPageLoaded.value = true; // Marcar la página como cargada
@@ -37,15 +41,16 @@ async function getUserAppointments(){
   userAppointments.value = data
 }
 
-async function getUserAdmin(){
-  const {data} = await AppointmentAPI.getUserAdmin(user.value._id)
-  userAppointments.value = data
+async function getUser(){
+  const {data} = await UserAPI.getUser()
+  userAdmins.value = data
 }
 
   function logout() {
     localStorage.removeItem('AUTH_TOKEN');
     user.value = {};
     isLoggedIn.value = false; // Actualizar el estado de isLoggedIn a false al cerrar sesión
+    console.log(isLoggedIn)
     router.push({ name: 'login' });
   }
 
@@ -58,7 +63,8 @@ async function getUserAdmin(){
     getUserAppointments,
     loading,
     logout,
-    getUserAdmin,
+    userAdmins,
+    getUser,
     getUserName,
     isLoggedIn, // Agregar la propiedad isLoggedIn a la devolución
     noAppointments

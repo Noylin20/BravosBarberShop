@@ -6,5 +6,8 @@ export default {
     },
     createUser(data){
         return api.post('/users', data)
+    },
+    getUser(){
+        return api.get('/users')
     }
 }

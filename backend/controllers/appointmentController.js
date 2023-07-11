@@ -100,6 +100,7 @@ const updateAppointment = async (req, res) => {
     appointment.time = time
     appointment.totalAmount = totalAmount
     appointment.services = services
+    appointment.barber = user._id
 
     try {
     const result =  await appointment.save()  

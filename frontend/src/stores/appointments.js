@@ -1,4 +1,4 @@
-import { ref, computed, onMounted, inject, watch } from 'vue'  //Se importan los servicios que el cliente quiere contratar
+import { ref, computed, onMounted, inject, watch, reactive } from 'vue'  //Se importan los servicios que el cliente quiere contratar
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 import AppointmentAPI from '../api/AppointmentAPI'
@@ -15,6 +15,9 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     const appointmentsByDate = ref([])
     const totalTime = ref([])
 
+    const state = reactive({
+        appointments: [] // Asegúrate de inicializarla como un array vacío
+      })
 
     const toast = inject('toast')
     const router = useRouter()
@@ -32,6 +35,8 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     //     }
     // })
 
+
+    
     onMounted(() => {
         const startHour = 10;
         const endHour = 19;
@@ -51,6 +56,8 @@ export const useAppointmentsStore = defineStore('appointments', () => {
       });
       
 
+
+  // Watcher para detectar cambios en la selección del barbero
     
     watch(date, async () => {
         time.value = ''
@@ -159,9 +166,10 @@ export const useAppointmentsStore = defineStore('appointments', () => {
         ///Vamos a comprobar que no hayan servicios repetidos
         if (services.value.some(selectedService => selectedService._id === service._id)) {
             services.value = services.value.filter(selectedService => selectedService._id !== service._id)
-        } else {
-            if (services.value.length === 2) {
-                alert('Maximo 2 servicios por cita')
+       } 
+        else {
+            if (services.value.length === 10000) {
+                alert('Maximo 5 servicios por cita')
                 return
             }
             services.value.push(service)
@@ -213,6 +221,7 @@ export const useAppointmentsStore = defineStore('appointments', () => {
         totalAmount,
         isValidReservation,
         isDateSelected,
-        disableTime
+        disableTime,
+        state
     }
 })

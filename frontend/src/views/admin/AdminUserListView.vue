@@ -34,7 +34,7 @@ const user = useUserStore()
 
         </div>
         <div class="grid grid-cols-1 gap-5 mt-10">
-            <AdminUser v-for="user in user.getUserAdmin" :key="user._id"
+            <AdminUser v-for="user in user.getUser" :key="user._id"
                 :user="user" />
         </div>
     </div>

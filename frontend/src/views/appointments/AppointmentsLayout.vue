@@ -11,7 +11,7 @@ const user = useUserStore()
     
     <div class="flex justify-between">
     
-        <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1>
+        <!-- <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1> -->
         <div class="flex flex-col space-y-5">
             <!-- <div class="flex gap-2 items-center">
                 <div class="flex justify-end">
