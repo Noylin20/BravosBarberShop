@@ -1,6 +1,6 @@
 <script setup>
 import { useServicesStore } from '../../stores/services'
-const store = useServicesStore()
+const services = useServicesStore()
 
 </script>
 
@@ -21,11 +21,13 @@ const store = useServicesStore()
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(service, index) in store.services">
+                    <tr v-for="(service, index) in services.services">
                         <th scope="row"> {{ index }}</th>
                         <td contenteditable="true">{{ service.name }}</td>
                         <td contenteditable="true" style="height: 70px;">{{ service.description }}</td>
                         <td contenteditable="true">{{ service.price }}</td>
+                        <td style="width: 10%;"><button type="button" class="btn btn-outline-danger"
+                            @click="services.deleteService(service._id)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>

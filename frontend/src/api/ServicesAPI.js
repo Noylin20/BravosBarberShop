@@ -6,5 +6,8 @@ export default {
     },
     createService(data){
         return api.post('/services', data)
+    },
+    deleteService(id){
+        return api.delete(`/services/${id}`)
     }
 }

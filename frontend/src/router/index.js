@@ -169,7 +169,7 @@ const router = createRouter({
         {
           path: '',
           name: 'create-service',
-          component: () => import('../views/servicesManagement/ServiceView.vue'),
+          component: () => import('../views/servicesManagement/NewServiceLayout.vue'),
         }
       ]
     }

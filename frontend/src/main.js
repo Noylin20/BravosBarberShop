@@ -3,8 +3,8 @@ import './assets/main.css'
 import "vue-toast-notification/dist/theme-bootstrap.css"
 import 'bootstrap'
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
-// import 'jquery/src/jquery.js'
+import 'bootstrap'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 
 import { createApp } from 'vue'

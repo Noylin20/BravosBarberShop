@@ -25,10 +25,10 @@ const toggleDetails = () => {
     <p class="text-lg font-medium">{{ service.name }}</p>
     <p class="text-xl font-bold">{{ formatCurrency(service.price) }}</p>
     
-    <button @click="toggleDetails" class="bg-blue-500 text-white px-3 py-1 rounded">Ver más</button>
+    <!-- <button @click="toggleDetails" class="bg-blue-500 text-white px-3 py-1 rounded">Ver más</button> -->
     
-    <div v-if="showDetails" class="mt-2">
-      <p class="text-sm">Descripción: {{ service.description }}</p>
+    <div class="mt-2">
+      <p class="text-sm"> {{ service.description }}</p>
     </div>
   </div>
 </template>

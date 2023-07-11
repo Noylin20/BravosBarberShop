@@ -9,7 +9,7 @@ router.route('/')
     .post(createService)
     .get(getServices)
  
-router.route('/id')
+router.route('/:id')
     .get(getServicesById)
     .put(updateService)
     .delete(deleteService)
