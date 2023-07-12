@@ -6,8 +6,11 @@ const user = useUserStore()
 
 <template>
     <br>
-    <h2 class="text-4xl font-extrabold text-black mt-18">Mis citas</h2>
-    <p class="text-black text-lg mt-5">A continuación podrás administrar tus próximas citas</p>
+    <div>
+        <h2 class="text-4xl font-extrabold text-black mt-1">Mis citas</h2>
+        <p class="text-black text-lg mt-5">A continuación podrás administrar tus próximas citas</p>
+    </div>
+    
     <p v-if="user.loading" class="text-black text-2xl text-center mt-5">Cargando...</p>
     <div v-else>
         <p v-if="user.noAppointments" class="text-black text-2xl text-center mt-5">No tienes próximas citas</p>

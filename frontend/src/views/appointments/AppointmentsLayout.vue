@@ -7,7 +7,7 @@ const user = useUserStore()
 
 
 <template>
-    <div class="flex justify-between">
+    <div class="flex justify-end">
 
         <!-- <h1 class="text-2xl lg:text-6xl font-black text-black">Barbería Bravos</h1> -->
         <div class="flex flex-col space-y-5">

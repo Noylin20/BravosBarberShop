@@ -1,5 +1,5 @@
 <template>
-  <div class="contacto">
+  <div class="contacto grid grid-cols-1 gap-3 mt-10" style="background-color: rgba(0,0,0,0.1); border-radius: 5px;">
     <div class="contacto-info">
       <div class="contacto-item">
         <i class="fas fa-map-marker-alt"></i>

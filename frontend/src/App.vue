@@ -46,6 +46,8 @@ const user = useUserStore();
                     Cerrar sesión
                 </button>
             </div>
+
+            
         </div>
     </div>
 </nav>
