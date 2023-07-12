@@ -55,7 +55,7 @@ const handleSubmit = async ({ ...formData }) => {
             <tr>
               <th style="position: relative; bottom: 50px;">
                 <label>Duración:</label>
-                <FormKit type="number" name="duration" placeholder="Duración estimada del servicio" validation="required" :validation-messages="{
+                <FormKit type="number" name="duration" placeholder="Duración estimada en minutos del servicio" validation="required" :validation-messages="{
                   required: 'La duración del servicio es obligatoria'
                 }" />
             
