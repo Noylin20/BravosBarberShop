@@ -20,17 +20,17 @@ const user = useUserStore()
     <div v-else>
         <div class="flex justify-end mb-4">
             <div class="mr-4">
-                <RouterLink :to="{ name: 'admin-createBarber' }" style="border: 1px solid; border-color: blue;"
-                    class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">
-                    Crear barbero
-                </RouterLink>
-            </div>
-            <div class="mr-4">
-                <RouterLink :to="{ name: 'admin-appointments' }" style="border: 1px solid; border-color: blue;"
-                    class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">
-                    Regresar
-                </RouterLink>
-            </div>
+    <RouterLink :to="{ name: 'admin-createBarber' }"
+        class="p-2 text-black-200 uppercase text-xs font-black rounded-lg hover:bg-blue-500 hover:text-white no-underline border border-blue-500">
+        Crear barbero
+    </RouterLink>
+</div>
+<div class="mr-4">
+    <RouterLink :to="{ name: 'admin-appointments' }"
+        class="p-2 text-black-200 uppercase text-xs font-black rounded-lg hover:bg-blue-500 hover:text-white no-underline border border-blue-500">
+        Regresar
+    </RouterLink>
+</div>
 
         </div>
         <div class="grid grid-cols-1 gap-5 mt-10">

@@ -19,16 +19,16 @@ onMounted(()=>{
    <nav class="my-5 flex gap-3">
       <RouterLink
          :to="{name: 'new-appointment'}"
-         class="flex-1 text-center p-1 uppercase font-extrabold hover:bg-blue-600 hover:text-white"
-         :class="route.name === 'new-appointment' ? 'bg-blue-500 text-white': 'bg-white text-blue-500'"
+         class="no-underline flex-1 text-center p-1 uppercase font-extrabold hover:bg-blue-600 hover:text-white border border-blue-500 rounded-md"
+         :class="route.name === 'new-appointment' ? 'bg-blue-500 text-white': 'bg-blue text-white-500'"
       >
          Servicios 
       </RouterLink>
 
       <RouterLink
          :to="{name:'appointment-details'}"
-         class="flex-1 text-center p-1 uppercase font-extrabold hover:bg-blue-600 hover:text-white"
-         :class="route.name === 'appointment-details' ? 'bg-blue-500 text-white': 'bg-white text-blue-500'"
+         class="no-underline flex-1 text-center p-1 uppercase font-extrabold hover:bg-blue-600 hover:text-white border border-blue-500 rounded-md"
+         :class="route.name === 'appointment-details' ? 'bg-blue-500 text-white': 'bg-blue text-white-500'"
       >
          Cita y resumen 
       </RouterLink>

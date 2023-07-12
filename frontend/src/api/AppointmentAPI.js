@@ -23,7 +23,4 @@ export default{
     getUserAdmin(userId){
         return api.get(`/users/${userId}/admin`)
     },
-
-
-    
 }

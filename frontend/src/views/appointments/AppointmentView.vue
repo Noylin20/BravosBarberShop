@@ -12,8 +12,6 @@ const formatter = ref({
     month: 'MMM'
 })
 
-
-
 // Deshabilita fechas anteriores 
 const disableDate = (date) => {
     const today = new Date()
@@ -22,31 +20,34 @@ const disableDate = (date) => {
 }
 
 const barbers = ref([
-  { _id: '64a255030f365ff57693a25b', name: 'Juan Moya', entryTime: '09:00', exitTime: '11:00' },
-  { _id: '64ada381e123f4228ee57bc3', name: 'Manuel Perez', entryTime: '12:00', exitTime: '14:00' }
+    { _id: '64a255030f365ff57693a25b', name: 'Juan Moya', entryTime: '09:00', exitTime: '11:00' },
+    { _id: '64ada381e123f4228ee57bc3', name: 'Manuel Perez', entryTime: '12:00', exitTime: '14:00' }
 ])
 
 const selectedBarber = ref(null)
 
 const availableHours = computed(() => {
-  const hours = []
+    const hours = []
 
-  if (selectedBarber.value) {
-    const entryTime = new Date(`01/01/2023 ${selectedBarber.value.entryTime}`)
-    const exitTime = new Date(`01/01/2023 ${selectedBarber.value.exitTime}`)
+    if (selectedBarber.value) {
+        const entryTime = new Date(`01/01/2023 ${selectedBarber.value.entryTime}`)
+        const exitTime = new Date(`01/01/2023 ${selectedBarber.value.exitTime}`)
 
-    let currentHour = entryTime
-    while (currentHour <= exitTime) {
-      hours.push(currentHour.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }))
-      currentHour.setMinutes(currentHour.getMinutes() + 15)
+        let currentHour = entryTime
+        while (currentHour <= exitTime) {
+            hours.push(currentHour.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }))
+            currentHour.setMinutes(currentHour.getMinutes() + 15)
+        }
     }
-  }
-
-  return hours
+    return hours
 })
 
-
-
+const totalDuration = computed(() => {
+  const minutes = appointments.services.reduce((total, service) => total + service.duration, 0);
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return `${hours}:${remainingMinutes.toString().padStart(2, '0')}`;
+});
 
 </script>
 
@@ -64,6 +65,9 @@ const availableHours = computed(() => {
                 class="col-span-1 text-sm" />
 
         </div>
+        <div class="text-gray-700 text-lg font-bold mr-2">
+            Duración estimada: {{ totalDuration }} minutos
+        </div>
         <div class="flex justify-end mt-2">
             <div class="text-gray-700 text-lg font-bold mr-2">
                 Total a pagar:
@@ -76,7 +80,6 @@ const availableHours = computed(() => {
         </div>
     </div>
 
-    <!-- <div v-if="appointments.isDateSelected" class="flex justify-start mt-4"> -->
     <div v-if="appointments.isDateSelected" class="flex justify-start mt-4">
         <div class="text-gray-700 text-base font-bold mr-2">
             Barbero:
@@ -87,7 +90,6 @@ const availableHours = computed(() => {
                 <option v-for="barber in barbers" :key="barber._id" :value="barber">{{ barber.name }}</option>
             </select>
         </div>
-        <!-- </div> -->
     </div>
 
     <div class="space-y-8" v-if="!appointments.noServicesSelected">
@@ -116,4 +118,5 @@ const availableHours = computed(() => {
         </div>
     </div>
 </template>
+
 

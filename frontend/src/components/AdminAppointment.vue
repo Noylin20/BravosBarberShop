@@ -15,11 +15,11 @@ defineProps({
     <div class="bg-gray p-5 space-y-3 rounded-lg bg-light-gray-500">
         <p class="text-black-500 font-black">
             Fecha: <span class="font-light">{{ displayDate(appointment.date) }}</span>
-            Hora: <span class="font-light">{{ appointment.time }}</span>
+            <br><br> Hora: <span class="font-light">{{ appointment.time }}</span>
         </p>
 
         <p class="text-black-500 font-black">
-            Nombre cliente: <span class="font-light">{{ appointment.user.name }}</span> 
+            Nombre cliente: <span class="font-light">{{ appointment.user.name }}{{ appointment.user.lastname }}</span> 
             <br> <br>Email: <span class="font-light">{{ appointment.user.email }}</span> 
         </p>
           

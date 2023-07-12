@@ -14,11 +14,14 @@
           <p>Teléfono: 2445 0606</p>
         </div>
         <br>
-        <router-link to="/SeeMore" class="btn-more">Ver más</router-link>
+        <router-link to="/SeeMore"  class="p-2 text-black-200 uppercase text-xs font-black rounded-lg hover:bg-blue-500 hover:text-white no-underline border border-blue-500">
+        Ver más</router-link>
       </div>
     </div>
   </div>
 </template>
+
+
 
 <style>
 .image-section {

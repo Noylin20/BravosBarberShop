@@ -34,13 +34,13 @@ const handleSubmit = async ({ password_confirm, ...formData }) => {
 
 <template>
   <div class="flex justify-end">
-    <div class="mr-4">
+    <div class="mr-4"><br>
         <RouterLink :to="{ name: 'admin-appointments' }" style="border: 1px solid; border-color: blue;"
-            class="p-2 text-black-200 uppercase text-xs font-black rounded-lg">
+        class="p-2 text-black-200 uppercase text-xs font-black rounded-lg hover:bg-blue-500 hover:text-white no-underline border border-blue-500">
             Regresar
         </RouterLink>
     </div>
-</div>
+</div> 
 
     <h1 class="text-4xl font-extrabold text-black text-center mt-10">Crea un barbero</h1>
     <p class="text-1xl text-black text-center my-3 ">Crear cuenta para un barbero</p>

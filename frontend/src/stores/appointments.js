@@ -151,16 +151,20 @@ export const useAppointmentsStore = defineStore('appointments', () => {
                     message: data.msg,
                     type: 'success'
                 })
-
-                user.userAppointments = user.userAppointments.filter(appointment => appointment._id !== id)//Para que la página se recargue sin la cita cancelada
+    
+                user.userAppointments = user.userAppointments.filter(appointment => appointment._id !== id)
             } catch (error) {
-                toast.open({
-                    message: error.response.data.msg,
-                    type: 'error'
-                })
+                const errorMsg = error.response.data.msg.replace(/(https?:\/\/)?[\d.]+(:\d+)?/g, '');
+                if (errorMsg.trim() !== '') {
+                    toast.open({
+                        message: errorMsg,
+                        type: 'error'
+                    })
+                }
             }
         }
     }
+    
 
     function onServiceSelected(service) {
         ///Vamos a comprobar que no hayan servicios repetidos
