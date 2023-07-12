@@ -17,8 +17,9 @@ const handleSubmit = async ({ ...formData }) => {
 
 <template>
   <div style="position: relative; top: 50px;">
-    <div>
+    <div style="text-align: center;">
       <h2><b>Crear nuevo servicio</b></h2>
+      <hr style="position: relative; width: 70%; margin-left: 15%;">
     </div>
 
     <div>
@@ -53,8 +54,8 @@ const handleSubmit = async ({ ...formData }) => {
             </tr>
             <tr>
               <th style="position: relative; bottom: 50px;">
-                <label>Precio:</label>
-                <FormKit type="number" name="duration" placeholder="Duración establecida al servicio" validation="required" :validation-messages="{
+                <label>Duración:</label>
+                <FormKit type="number" name="duration" placeholder="Duración estimada del servicio" validation="required" :validation-messages="{
                   required: 'La duración del servicio es obligatoria'
                 }" />
             
@@ -62,7 +63,7 @@ const handleSubmit = async ({ ...formData }) => {
             </tr>
           </tbody>
         </table>
-        <FormKit style="margin-left: 30%; width: 45%;" type="submit">Crear producto</FormKit>
+        <FormKit style="margin-left: 30%; width: 45%;" type="submit">Crear servicio</FormKit>
       </FormKit>
     </div>
   </div>

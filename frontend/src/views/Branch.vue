@@ -1,8 +1,9 @@
 <template>
   <div class="image-section">
     <div class="image-item">
-      <img src="../../public/img/s2.jpg" alt="Image 2" style="width: 350px; height: 350px; display: block; margin: 0 auto;">
+      <img src="../../public/img/ExteriorB1.jpeg" alt="Image 2" style="width: 800px; height: 350px; display: block; margin: 0 auto;">
       <div class="image-info">
+        <br>
         <h2  class="flex-1 text-center p-1 uppercase font-extrabold hover:text-black">BRAVO´S SAN RAMÓN</h2>
         <div class="icon-info">
           <i class="fas fa-map-marker-alt"></i>
@@ -12,6 +13,7 @@
           <i class="fas fa-phone"></i>
           <p>Teléfono: 2445 0606</p>
         </div>
+        <br>
         <router-link to="/SeeMore" class="btn-more">Ver más</router-link>
       </div>
     </div>
@@ -30,7 +32,7 @@
 }
 
 .image-item img {
-  width: 350px;
+  width: 100%;
   height: 350px;
   object-fit: cover;
   border-radius: 5px;
@@ -42,6 +44,7 @@
   margin-top: 10px;
   font-size: 16px;
   text-align: center;
+  margin-left: 10px;
 }
 
 .image-info h3 {
@@ -59,6 +62,8 @@ h2 {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  margin-left: 15%;
+  margin-right: 20%;
 }
 
 .icon-info i {

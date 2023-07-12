@@ -5,10 +5,11 @@ const services = useServicesStore()
 </script>
 
 <template>
-    <div style="position:relative;top:40px;">
-        <div >
+    <div style="position:relative;top:60px;">
+        <div style="text-align: center;">
             <h2><b>Servicios disponibles</b></h2>
         </div>
+        <hr style="position: relative; width: 70%; margin-left: 15%;">
         <br /><br />
         <div>
             <table class="table table-striped">

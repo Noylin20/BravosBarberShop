@@ -1,19 +1,5 @@
 <template>
   <div class="contacto">
-    <div class="contacto-info">
-      <div class="contacto-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Dirección: 175 oeste del Parque. San Ramón, Provincia de Alajuela, Costa Rica</span>
-      </div>
-      <div class="contacto-item">
-        <i class="fas fa-phone"></i>
-        <span>Teléfono: 2445 0606</span>
-      </div>
-      <div class="contacto-item">
-        <i class="fas fa-envelope"></i>
-        <span>Email: bravosbarberiasr@gmail.com</span>
-      </div>
-    </div>
     <div class="contacto-form">
       <h2  class="flex-1 text-center p-1 uppercase font-extrabold  hover:text-black">¡Contáctanos!</h2>
       <form>
@@ -31,6 +17,22 @@
         </div>
         <button class="btn-enviar" @click.prevent="enviarMensaje">Enviar</button>
       </form>
+    </div>
+    <br><br><br><br><br>
+    <div class="contacto-info">
+      <div class="contacto-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Dirección: 175 oeste del Parque. San Ramón, Provincia de Alajuela, Costa Rica</span>
+      </div>
+      
+      <div class="contacto-item">
+        <i class="fas fa-phone"></i>
+        <span>Teléfono: 2445 0606</span>
+      </div>
+      <div class="contacto-item">
+        <i class="fas fa-envelope"></i>
+        <span>Email: bravosbarberiasr@gmail.com</span>
+      </div>
     </div>
   </div>
 </template>
@@ -57,6 +59,8 @@ export default {
 
 <style scoped>
 .contacto {
+  position: relative;
+  top:90px !important;
   text-align: center;
   padding: 20px;
 }
