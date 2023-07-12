@@ -9,16 +9,16 @@ module.exports = {
     './node_modules/vue-tailwind-datepicker/**/*.js',
     "./formkit.config.js"
   ],
-  theme: {
-    extend: {
-      backgroundImage : {
-        "app" : "url('/img/t3.jpg')"
-      },
-      colors:{
-        "vtd-primary": colors.blue
-      }
-    },
-  },
+  // theme: {
+  //   extend: {
+  //     backgroundImage : {
+  //       "app" : "url('/img/t3.jpg')"
+  //     },
+  //     colors:{
+  //       "vtd-primary": colors.blue
+  //     }
+  //   },
+  // },
   plugins: [],
 }
 

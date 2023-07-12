@@ -7,7 +7,8 @@ const user = useUserStore()
 <template>
     <br>
     <div>
-        <h2 class="text-4xl font-extrabold text-black mt-1">Mis citas</h2>
+        <h2 class="flex-1 text-center p-4 uppercase font-extrabold hover:text-black">Mis citas</h2>
+        <hr>
         <p class="text-black text-lg mt-5">A continuación podrás administrar tus próximas citas</p>
     </div>
     

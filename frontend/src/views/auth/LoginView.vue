@@ -26,8 +26,12 @@ const handleSubmit = async (formData) => {
   
 
 <template>
-  <h1 class="text-4xl font-extrabold text-black text-center mt-10">Iniciar sesión</h1>
+  <div style="width: 100%;">
+  <div class="img_AU">
+    <h1 class="text-4xl font-extrabold text-black text-center mt-10">Iniciar sesión</h1>
   <p class="text-1xl text-black text-center my-3 ">Inicia sesión en Bravo´s Barbería</p>
+    </div>
+
 
   <FormKit id="loginForm" type="form" :actions="false" incomplete-message="No se pudo enviar, revisa las notificaciones"
     @submit="handleSubmit">
@@ -45,4 +49,18 @@ const handleSubmit = async (formData) => {
 
     <FormKit type="submit">Iniciar Sesión</FormKit>
   </FormKit>
+</div>
 </template>
+<style>
+.img_AU {
+    position: relative;
+    top:-80px;
+    width: 100%;
+    height: 450px;
+    background-image: url('/img/ExteriorIB.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+</style>
