@@ -20,7 +20,6 @@ defineProps({
 
         <p class="text-black-500 font-black">
             Nombre cliente: <span class="font-light">{{ appointment.user.name }}{{ appointment.user.lastname }}</span> 
-            <br> <br>Email: <span class="font-light">{{ appointment.user.email }}</span> 
         </p>
           
 
@@ -28,12 +27,12 @@ defineProps({
 
         <div v-for="service in appointment.services" >
             <p>{{ service.name }}</p>
-            <p class="text-1xl font-black text-blue-500">{{ formatCurrency(service.price) }}</p>
+            <!-- <p class="text-1xl font-black text-blue-500">{{ formatCurrency(service.price) }}</p> -->
         </div>
 
-        <p class="text-1xl font-black text-right">
+        <!-- <p class="text-1xl font-black text-right">
             Total a pagar: <span class="text-blue-600">{{ formatCurrency(appointment.totalAmount) }}</span>
-        </p>
+        </p> -->
 
         
     </div>

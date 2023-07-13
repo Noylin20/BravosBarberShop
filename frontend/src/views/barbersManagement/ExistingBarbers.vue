@@ -19,7 +19,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(barber, index) in barbers.services" :key="barber._id">
+            <tr v-for="(barber, index) in barbers.barbers" :key="barber._id">
               <th scope="row">{{ index + 1 }}</th>
               <td>
                 <template v-if="barber.editable">

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AuthLayout from '../views/auth/AuthLayout.vue'
 
 import AppointmentsLayout from '../views/appointments/AppointmentsLayout.vue'
 import AuthAPI from '../api/AuthAPI'
@@ -34,8 +33,8 @@ const router = createRouter({
         },
         {
           path: '',
-          name: 'admin-createBarber',
-          component: () => import('../views/admin/NewBarberView.vue'),
+          name: 'admin-calendar',
+          component: () => import('../views/admin/Calendar.vue'),
 
         },
         {
@@ -43,6 +42,23 @@ const router = createRouter({
           name: 'admin-listBarber',
           component: () => import('../views/admin/AdminUserListView.vue'),
 
+        },
+        ///Vistas de la administración de barberos
+
+        {
+          path: '',
+          name: 'barbers-list',
+          component: () => import('../views/admin/ExistingBarbers.vue'),
+        },
+        {
+          path: '',
+          name: 'list-services',
+          component: () => import('../views/admin/ExistingServices.vue'),
+        },
+        {
+          path: '',
+          name: 'create-barber',
+          component: () => import('../views/barbersManagement/NewBarberLayout.vue'),
         }
       ]
     },
@@ -113,15 +129,12 @@ const router = createRouter({
               path: 'detalles',
               name: 'edit-appointment-details',
               component: () => import('../views/appointments/AppointmentView.vue')
-            },
+            }
           ]
         }
       ]
     },
 
-
-
-    ///
     //Todo lo relacionado con la autenticación 
 
     {
@@ -179,7 +192,6 @@ const router = createRouter({
         }
       ]
     }
-
   ]
 })
 

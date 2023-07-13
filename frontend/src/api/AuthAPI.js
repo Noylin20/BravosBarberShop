@@ -25,5 +25,5 @@ export default {
     },
     updatePassword(token, data){
         return api.post(`/auth/forgot-password/${token}`, data)
-    },
+    }
 }

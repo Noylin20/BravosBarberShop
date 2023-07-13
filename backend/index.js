@@ -5,6 +5,7 @@ import cors from 'cors'
 import {db} from './config/db.js'
 import servicesRoutes from './routes/servicesRoutes.js'
 import authRoutes from './routes/authRoutes.js'
+import barbersRoutes from './routes/barbersRoutes.js'
 import appointmentRoutes from './routes/appointmentRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 //variables de entorno 
@@ -65,6 +66,7 @@ app.use('/api/services',servicesRoutes)
 app.use('/api/auth',authRoutes)
 app.use('/api/appointments',appointmentRoutes)
 app.use('/api/users',userRoutes)
+app.use('/api/barbers',barbersRoutes)
 
 
 //definir puerto

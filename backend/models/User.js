@@ -37,16 +37,6 @@ const userSchema = mongoose.Schema({
     admin: {
         type: Boolean,
         default: false //usuario es el cliente, pero al cambiar a true pasa a ser admin 
-    },
-    schedule: {
-        inicio: {
-            type: String,
-            default: ''
-        },
-        salida: {
-            type: String,
-            default: ''
-        }
     }
 })
 
