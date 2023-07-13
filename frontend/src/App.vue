@@ -7,11 +7,14 @@ const user = useUserStore();
 <template>
   <div>
     <nav class="bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class=" mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
+                    <RouterLink to="/"
+                            class="no-underline text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                     <h1 class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Bravo´s Barbería</h1>
+                </RouterLink>
                     <!-- <img class="h-8 w-8" src="/logo.png" alt="Logo"> -->
                 </div>
                 <div class="hidden md:block">
@@ -52,12 +55,13 @@ const user = useUserStore();
     </div>
 </nav>
 
-    <!-- <div class="md:flex h-screen">
-      <div class="h-64 md:h-auto bg-cover bg-center md:w-1/3 bg-app"></div>
-      <div class="md:w-2/3 px-10 py-5 min-h-full overflow-y-scroll">-->
+    <!-- <div class="md:flex h-screen"> -->
+      <!-- <div class="h-64 md:h-auto bg-cover bg-center md:w-1/3 bg-app"></div> -->
+      <!-- <div class="md:w-2/3 px-10 py-5 min-h-full overflow-y-scroll"> -->
         <RouterView />
       <!-- </div>
     </div>  -->
   </div>
 </template>
+
 
