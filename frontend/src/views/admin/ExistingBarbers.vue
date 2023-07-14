@@ -11,23 +11,24 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Email</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Correo</th>
             <th scope="col">Hora de entrada</th>
             <th scope="col">Hora de salida</th>
             <th style="width: 15%;" scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(barber, index) in barbers.services" :key="barber._id">
+          <tr v-for="(barbers, index) in barbers.barbers" :key="barbers._id">
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ barber.name }}</td>
-            <td>{{ barber.lastName }}</td>
-            <td>{{ barber.email }}</td>
-            <td>{{ barber.scheduleStart }}</td>
-            <td>{{ barber.scheduleEnd }}</td>
+            <td>{{ barbers.name }}</td>
+            <td>{{ barbers.lastName }}</td>
+            <td>{{ barbers.email }} </td>
+            <td>{{ barbers.scheduleStart }} </td>
+            <td>{{ barbers.scheduleEnd }} </td>
             <td style="width: 10%;">
-              <button type="button" class="btn btn-outline-danger" style="margin-right: 10px;" @click="deleteBarber(barber._id)">Eliminar</button>
+              <button type="button" class="btn btn-outline-danger" style="margin-right: 10px;"
+                @click="barbers.deleteBarber(barbers._id)">Eliminar</button>
             </td>
           </tr>
           <tr>
@@ -36,10 +37,10 @@
               <input v-model="formData.name" type="text" class="form-control" placeholder="Nombre">
             </td>
             <td>
-              <input v-model="formData.lastName" type="text" class="form-control" placeholder="Apellido">
+              <input v-model="formData.lastName" type="text" class="form-control" placeholder="Apellidos">
             </td>
             <td>
-              <input v-model="formData.email" type="text" class="form-control" placeholder="Email">
+              <input v-model="formData.email" type="text" class="form-control" placeholder="Correo">
             </td>
             <td>
               <input v-model="formData.scheduleStart" type="text" class="form-control" placeholder="Hora de entrada">
@@ -48,7 +49,7 @@
               <input v-model="formData.scheduleEnd" type="text" class="form-control" placeholder="Hora de salida">
             </td>
             <td>
-              <button type="button" class="btn btn-primary" @click="addBarber">
+              <button type="button" class="btn btn-primary" @click="barbers.admin - createBarber(formData); clearForm()">
                 Agregar
               </button>
             </td>
@@ -60,7 +61,7 @@
 </template>
 
 <script setup>
-import { useBarbersStore } from '../../stores/barbers'
+import { useServicesStore as useBarbersStore } from '../../stores/barbers'
 const barbers = useBarbersStore()
 
 // Variables para el formulario
@@ -70,23 +71,6 @@ let formData = {
   email: '',
   scheduleStart: '',
   scheduleEnd: ''
-}
-
-const addBarber = () => {
-  barbers.createBarber({
-    name: formData.name,
-    lastName: formData.lastName,
-    email: formData.email,
-    scheduleStart: formData.scheduleStart,
-    scheduleEnd: formData.scheduleEnd
-  })
-
-  // Limpiar el formulario después de agregar el barbero
-  clearForm()
-}
-
-const deleteBarber = (barberId) => {
-  barbers.deleteBarber(barberId)
 }
 
 const clearForm = () => {
@@ -100,16 +84,5 @@ const clearForm = () => {
 }
 </script>
 
-<style>
-.edit-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
-  background-color: white;
-  border: 1px solid black;
-  padding: 20px;
-}
-</style>
+
+ 
