@@ -8,6 +8,7 @@ import AppointmentAPI from '../../api/AppointmentAPI';
 import {useAppointmentsStore} from '../../stores/appointments';
 
 
+
 const appointments = useAppointmentsStore()
 const route = useRoute()
 const router = useRouter()

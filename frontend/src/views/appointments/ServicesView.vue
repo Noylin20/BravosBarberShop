@@ -2,6 +2,7 @@
 <script setup>
 import ServiceItem from '../../components/ServiceItem.vue';
 import {useServicesStore} from '../../stores/services'
+
 const store = useServicesStore()
 
 </script>

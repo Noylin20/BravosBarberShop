@@ -3,6 +3,7 @@ import { inject } from 'vue'
 
 import { useRouter } from 'vue-router'
 import AuthAPI from '../../api/AuthAPI'
+import Nav from '../navbar/Nav.vue'
 
 const toast = inject('toast')
 const router = useRouter()
@@ -26,6 +27,7 @@ const handleSubmit = async (formData) => {
   
 
 <template>
+  <Nav/>
   <div class="fsize">
     <div class="img_AU">
       <div class="center_Txt">
@@ -58,7 +60,7 @@ const handleSubmit = async (formData) => {
 <style>
 .img_AU {
   position: relative;
-  top: -40px;
+  top: 0px;
   width: 100%;
   height: 350px;
   background-image: url('/img/ExteriorIB.jpeg');

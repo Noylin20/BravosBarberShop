@@ -5,6 +5,7 @@ import SelectedServices from '../../components/SelectedServices.vue';
 import { formatCurrency } from '../../helpers';
 import { useAppointmentsStore } from '../../stores/appointments';
 
+
 const appointments = useAppointmentsStore()
 
 const formatter = ref({
@@ -52,6 +53,7 @@ const totalDuration = computed(() => {
 </script>
 
 <template>
+
    <div class="px-4 md:px-8 py-4">
     <!-- <h2 class="text-4xl font-extrabold text-black">Detalles y resumen de la cita</h2> -->
     <p class="text-black text-lg">A continuación verifica la información y confirma tu cita</p>

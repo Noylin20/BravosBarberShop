@@ -6,6 +6,7 @@ import { onMounted } from 'vue';
 import {useRoute} from 'vue-router'
 import { useAppointmentsStore } from '../../stores/appointments';
 
+
 const appointments = useAppointmentsStore()
 const route = useRoute()
 
@@ -16,7 +17,8 @@ onMounted(()=>{
 
 
 <template>
-   <nav class="my-5 flex gap-3">
+   
+   <nav class="my-5 flex gap-3" style="position: relative; top: 20px;">
       <RouterLink
          :to="{name: 'new-appointment'}"
          class="no-underline flex-1 text-center p-1 uppercase font-extrabold hover:bg-blue-600 hover:text-white border border-blue-500 rounded-md"

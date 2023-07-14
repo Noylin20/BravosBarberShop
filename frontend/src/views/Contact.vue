@@ -1,4 +1,10 @@
+<script setup>
+import Nav from '../views/navbar/Nav.vue'
+
+</script>
+
 <template>
+  <Nav />
   <div class="contacto">
     <div class="contacto-form">
       <h2  class="flex-1 text-center p-1 uppercase font-extrabold  hover:text-black">¡Contáctanos!</h2>
@@ -38,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'Contacto',
   data() {

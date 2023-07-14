@@ -1,11 +1,13 @@
 <script setup>
 import ServiceList from '../components/ServiceList.vue';
 import { useServicesStore } from '../stores/services';
+import Nav from '../views/navbar/Nav.vue'
 
 const store = useServicesStore();
 </script>
 
 <template>
+  <Nav />
   <div class="textcenter">
     <h3 class="flex-1 text-center p-4 uppercase font-extrabold hover:text-black">Nuestros servicios</h3>
     <hr>

@@ -1,10 +1,16 @@
+<script setup>
+import Nav from '../views/navbar/Nav.vue'
+</script>
+
 <template>
+  <Nav />
   <div class="image-section">
     <div class="image-item">
-      <img src="../../public/img/ExteriorB1.jpeg" alt="Image 2" style="width: 800px; height: 350px; display: block; margin: 0 auto;">
+      <img src="../../public/img/ExteriorB1.jpeg" alt="Image 2"
+        style="width: 800px; height: 350px; display: block; margin: 0 auto;">
       <div class="image-info">
         <br>
-        <h2  class="flex-1 text-center p-1 uppercase font-extrabold hover:text-black">BRAVO´S SAN RAMÓN</h2>
+        <h2 class="flex-1 text-center p-1 uppercase font-extrabold hover:text-black">BRAVO´S SAN RAMÓN</h2>
         <div class="icon-info">
           <i class="fas fa-map-marker-alt"></i>
           <p class="text-center">175 oeste del Parque. San Ramón, Provincia de Alajuela, Costa Rica</p>
@@ -14,8 +20,9 @@
           <p>Teléfono: 2445 0606</p>
         </div>
         <br>
-        <router-link to="/SeeMore"  class="p-2 text-black-200 uppercase text-xs font-black rounded-lg hover:bg-blue-500 hover:text-white no-underline border border-blue-500">
-        Ver más</router-link>
+        <router-link to="/SeeMore"
+          class="p-2 text-black-200 uppercase text-xs font-black rounded-lg hover:bg-blue-500 hover:text-white no-underline border border-blue-500">
+          Ver más</router-link>
       </div>
     </div>
   </div>

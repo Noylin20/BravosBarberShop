@@ -1,8 +1,6 @@
-
-
-
 <script setup>
 import { useRoute } from 'vue-router'
+import Nav from '../navbar/Nav.vue'
 
 const route = useRoute()
 
@@ -15,6 +13,7 @@ const authRoutes = [
 
 
 <template>
+    <Nav />
     <div class="mx-auto ">
         <RouterView />
 
