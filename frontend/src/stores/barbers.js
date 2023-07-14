@@ -80,7 +80,7 @@ export const useBarbersStore = defineStore('barbers', () => {
     }
 
     return {
-        services: barbers,
+        barbers: barbers,
         name,
         lastName,
         email,

@@ -21,6 +21,11 @@ const barberSchema = mongoose.Schema({
         unique: true,
         lowercase: true
     },
+    phone: {
+        type: Number,
+        required: true,
+        trim: true
+    },
     scheduleStart: {
         type: String,
         required: true,

@@ -1,88 +1,82 @@
+<script setup>
+import { useBarbersStore } from '../../stores/barbers'
+const barbers = useBarbersStore()
+
+</script>
+
 <template>
-  <div style="margin-left: 200px; margin-right: 200px; margin-top: 60px;">
+  <div style="position:relative;top:60px;">
     <div style="text-align: center;">
       <h2><b>Barberos disponibles</b></h2>
     </div>
-    <hr style="width: 70%; margin-left: 15%;">
+    <hr style="position: relative; width: 70%; margin-left: 15%;">
     <br /><br />
     <div>
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellidos</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Hora de entrada</th>
-            <th scope="col">Hora de salida</th>
-            <th style="width: 15%;" scope="col">Acciones</th>
+            <th scope="col" style="text-align: left;">#</th>
+            <th scope="col" style="text-align: left;">Nombre</th>
+            <th scope="col" style="text-align: left;">Apellidos</th>
+            <th scope="col" style="text-align: left;">Correo</th>
+            <th scope="col" style="text-align: left;">Número de teléfono</th>
+            <th scope="col" style="text-align: left;">Hora de entrada</th>
+            <th scope="col" style="text-align: left;">Hora de entrada</th>
+            <th scope="col" style="text-align: left;">Acciones</th>
+
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(barbers, index) in barbers.barbers" :key="barbers._id">
-            <th scope="row">{{ index + 1 }}</th>
-            <td>{{ barbers.name }}</td>
-            <td>{{ barbers.lastName }}</td>
-            <td>{{ barbers.email }} </td>
-            <td>{{ barbers.scheduleStart }} </td>
-            <td>{{ barbers.scheduleEnd }} </td>
+          <tr v-for="(barber, index) in barbers.barbers" :key="barber._id">
+            <th scope="row">{{ index }}</th>
+            <td contenteditable="true" @input="barber.name = $event.target.textContent">{{ barber.name }}</td>
+            <td contenteditable="true" style="height: 70px;" @input="barber.lastName = $event.target.textContent">{{
+              barber.lastName }}</td>
+            <td contenteditable="true" style="height: 70px;" @input="barber.email = $event.target.textContent">{{
+              barber.email }}</td>
+            <td contenteditable="true" style="height: 70px;" @input="barber.phone = $event.target.textContent">{{
+              barber.phone }}</td>
+            <td contenteditable="true" style="height: 70px;" @input="barber.scheduleStart = $event.target.textContent">{{
+              barber.scheduleStart }}</td>
+            <td contenteditable="true" style="height: 70px;" @input="barber.scheduleEnd = $event.target.textContent">{{
+              barber.scheduleEnd }}</td>
+
+            <td>
+
+
+            <td style="width: 5%;"></td> <!-- Espacio agregado -->
             <td style="width: 10%;">
-              <button type="button" class="btn btn-outline-danger" style="margin-right: 10px;"
-                @click="barbers.deleteBarber(barbers._id)">Eliminar</button>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <input v-model="formData.name" type="text" class="form-control" placeholder="Nombre">
-            </td>
-            <td>
-              <input v-model="formData.lastName" type="text" class="form-control" placeholder="Apellidos">
-            </td>
-            <td>
-              <input v-model="formData.email" type="text" class="form-control" placeholder="Correo">
-            </td>
-            <td>
-              <input v-model="formData.scheduleStart" type="text" class="form-control" placeholder="Hora de entrada">
-            </td>
-            <td>
-              <input v-model="formData.scheduleEnd" type="text" class="form-control" placeholder="Hora de salida">
-            </td>
-            <td>
-              <button type="button" class="btn btn-primary" @click="barbers.createBarber(formData); clearForm()">
-                Agregar
+              <button type="button" class="btn btn-outline-info"
+                @click="barbers.updateBarber(barber); updateTable(barber)">
+                Editar
               </button>
             </td>
+            <td style="width: 5%;"></td> <!-- Espacio agregado -->
+            <td style="width: 10%;">
+              <button type="button" class="btn btn-outline-danger" @click="barbers.deleteBarber(barber._id)">
+                Eliminar
+              </button>
+            </td>
+
+
+            </td>
           </tr>
+          <td style="width: 15%; position: absolute; top: 0; right: 0;">
+            <button type="button" class="btn btn-outline-success" @click="$router.push({ name: 'newBarber' })">
+              Crear
+            </button>
+          </td>
+
         </tbody>
       </table>
+
     </div>
   </div>
 </template>
 
-<script setup>
-import { useServicesStore as useBarbersStore } from '../../stores/barbers'
-const barbers = useBarbersStore()
-
-// Variables para el formulario
-let formData = {
-  name: '',
-  lastName: '',
-  email: '',
-  scheduleStart: '',
-  scheduleEnd: ''
+<style>
+.mi-div {
+  margin-left: 100px;
+  margin-right: 100px;
 }
-
-const clearForm = () => {
-  formData = {
-    name: '',
-    lastName: '',
-    email: '',
-    scheduleStart: '',
-    scheduleEnd: ''
-  }
-}
-</script>
-
-
- 
+</style>

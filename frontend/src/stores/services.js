@@ -45,9 +45,33 @@ const services = ref([])
         } catch (error) {
             console.log(error) 
         }
-        router.push({ name:'services-list' })
+        router.push({ name:'list-services' })
 
     }
+
+    // async function updateService(service) {
+    //     try {
+    //       const { data } = await ServicesAPI.updateService(service); // Pass the updated service data
+    //       toast.open({
+    //         message: data.msg,
+    //         type: 'success'
+    //       });
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+      
+    //     console.log(service);
+      
+    //     try {
+    //       const { data } = await ServicesAPI.all();
+    //       services.value = data;
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+      
+    //     router.push({ name: 'services-list' });
+    //   }
+      
     
     async function deleteService(id) {
         if (confirm('¿Desea eliminar este servicio?')) {
@@ -66,6 +90,34 @@ const services = ref([])
             }
         }
     }
+   
+      
+    async function updateService(service) {
+        console.log('mi servicio a actualizar' + service._id)
+        console.log(service.description)
+
+        try {
+            const { data } = await ServicesAPI.updateService(service._id); // Pasamos los datos del servicio
+            toast.open({
+                message: data.msg,
+                type: 'success'
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    
+        console.log(service);
+    
+        try {
+            const { data } = await ServicesAPI.all();
+            services.value = data;
+        } catch (error) {
+            console.log(error);
+        }
+    
+        router.push({ name: 'list-services' });
+    }
+    
 
     return{
         services,
@@ -74,6 +126,7 @@ const services = ref([])
         price,
         duration,
         createService,
-        deleteService
+        deleteService,
+        updateService
     }
 })

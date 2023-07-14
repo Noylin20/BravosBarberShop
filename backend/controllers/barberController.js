@@ -69,6 +69,7 @@ const updateBarber = async (req, res) => {
    barber.name = req.body.name || barber.name
    barber.lastName = req.body.lastName || barber.lastName
    barber.email = req.body.email || barber.email
+   barber.phone = req.body.phone || barber.phone
    barber.scheduleStart = req.body.scheduleStar || barber.scheduleStart
    barber.scheduleEnd = req.body.scheduleEnd || barber.scheduleEnd
 

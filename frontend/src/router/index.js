@@ -40,7 +40,19 @@ const router = createRouter({
         {
           path: '',
           name: 'admin-listBarber',
-          component: () => import('../views/admin/AdminUserListView.vue'),
+          component: () => import('../views/admin/ExistingBarbers.vue'),
+
+        },
+        {
+          path: '',
+          name: 'newBarber',
+          component: () => import('../views/admin/NewBarber.vue'),
+
+        },
+        {
+          path: '',
+          name: 'newService',
+          component: () => import('../views/admin/NewService.vue'),
 
         },
         ///Vistas de la administración de barberos

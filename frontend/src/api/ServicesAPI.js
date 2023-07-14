@@ -9,5 +9,8 @@ export default {
     },
     deleteService(id){
         return api.delete(`/services/${id}`)
-    }
+    },    
+    updateService(id){
+        return api.put(`/services/${id}`)
+    },
 }

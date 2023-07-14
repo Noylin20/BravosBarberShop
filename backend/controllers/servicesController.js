@@ -52,6 +52,8 @@ const getServicesById = async (req, res) => {
     res.json(service)
 }
 
+
+
 const updateService = async (req, res) => { 
     const { id } = req.params
     
@@ -67,9 +69,11 @@ const updateService = async (req, res) => {
 
     //escribimos en el obj los valores nuevos 
    service.name = req.body.name || service.name
-   service.price = req.body.price || service.price
    service.description = req.body.description || service.description
+   service.price = req.body.price || service.price
    service.duration = req.body.duration || service.duration
+
+   console.log('mi servicio ' + service)
 
    try {
     await service.save()

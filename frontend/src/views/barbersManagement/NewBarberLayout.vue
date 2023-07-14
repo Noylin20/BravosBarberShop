@@ -74,6 +74,11 @@ const handleSubmit = async ({ ...formData }) => {
         <div style="text-align: center; margin-top: 20px;">
           <FormKit style="display: inline-block;" type="submit">Crear barbero</FormKit>
         </div>
+        <RouterLink :to="{ name: 'create-barber' }"
+                style="border: 1px solid; border-color: blue;"
+                    class="p-2 text-black-200 uppercase text-xs font-black rounded-lg ">
+                    Crea barbero
+                </RouterLink>
       </FormKit>
     </div>
   </div>
