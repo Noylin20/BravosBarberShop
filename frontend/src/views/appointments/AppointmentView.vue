@@ -54,11 +54,13 @@ const totalDuration = computed(() => {
 
 <template>
 
-   <div class="px-4 md:px-8 py-4">
+   <div class="mi-div px-4 md:px-8 py-4">
     <!-- <h2 class="text-4xl font-extrabold text-black">Detalles y resumen de la cita</h2> -->
-    <p class="text-black text-lg">A continuación verifica la información y confirma tu cita</p>
+    <h2 class="text-2xl font-extrabold text-black mt-18 mb-6 text-left">Servicios seleccionados</h2>
 
-    <h3 class="text-2xl font-extrabold text-black">Servicios seleccionados</h3>
+    <p class="text-black text-lg mt-5 text-left">A continuación verifica la información y confirma tu cita</p>
+
+    
 
     <p v-if="appointments.noServicesSelected" class="text-black text-2xl">No hay servicios seleccionados</p>
 
@@ -122,3 +124,10 @@ const totalDuration = computed(() => {
     </div>
   </div>
 </template>
+<style>
+
+.mi-div {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+</style>

@@ -9,11 +9,16 @@ const store = useServicesStore()
 
 
 <template>
-  <h2 class="text-4xl font-extrabold text-black mt-18">Servicios</h2>
-<p class="text-black text-lg mt-5">A continuación elige al menos un servicio para tu cita</p>
+ <div class="mi-div">
+  <h2 class="text-2xl font-extrabold text-black mt-18 mb-6 text-left">Servicios</h2>
+ <p class="text-black text-lg mt-5 text-left">A continuación elige al menos un servicio para tu cita</p>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
-  <ServiceItem
+</div>
+
+
+ 
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-5">
+   <ServiceItem
     v-for="service in store.services"
     :key="service._id"
     :service="service"
@@ -21,4 +26,14 @@ const store = useServicesStore()
   /> 
 </div>
 
+
 </template>
+<style>
+
+.mi-div {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+</style>
+
+

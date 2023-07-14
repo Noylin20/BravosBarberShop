@@ -49,7 +49,7 @@
               <input v-model="formData.scheduleEnd" type="text" class="form-control" placeholder="Hora de salida">
             </td>
             <td>
-              <button type="button" class="btn btn-primary" @click="barbers.admin - createBarber(formData); clearForm()">
+              <button type="button" class="btn btn-primary" @click="barbers.createBarber(formData); clearForm()">
                 Agregar
               </button>
             </td>
