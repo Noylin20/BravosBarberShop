@@ -1,12 +1,12 @@
 <template>
-    <div style="margin-left: 200px; margin-right: 200px; margin-top: 60px;">
+    <div style="margin-left: 100px; margin-right: 100px; margin-top: 60px;">
       <div style="text-align: center;">
         <h2><b>Barberos disponibles</b></h2>
       </div>
       <hr style="width: 70%; margin-left: 15%;">
       <br /><br />
       <div>
-        <table class="table table-striped">
+        <table class="table table-striped justify-center">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -15,7 +15,7 @@
               <th scope="col">Email</th>
               <th scope="col">Hora de entrada</th>
               <th scope="col">Hora de salida</th>
-              <th style="width: 15%;" scope="col">Acciones</th>
+              <th style="width: 25%;" scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -72,7 +72,7 @@
                 </template>
               </td>
             </tr>
-            <tr>
+            <tr >
               <td></td>
               <td>
                 <input v-model="formData.name" type="text" class="form-control" placeholder="Nombre" :disabled="editMode">

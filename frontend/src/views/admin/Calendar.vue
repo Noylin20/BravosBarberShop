@@ -1,18 +1,21 @@
 <template>
-    <div class="calendar">
-      <h2>Calendario de Citas</h2>
-      <div class="calendar-header">
-        <button @click="mostrarMes = true">Ver por Mes</button>
-        <button @click="mostrarMes = false">Ver por Día</button>
-        <div v-if="mostrarMes">
-          <button @click="mesAnterior">&lt;</button>
-          <h3>{{ mesActual }}</h3>
-          <button @click="mesSiguiente">&gt;</button>
-        </div>
-        <div v-else>
-          <input type="date" v-model="fechaSeleccionada" @change="verCitasPorDia" />
-        </div>
+      <div class="calendar">
+              <h2>Calendario de Citas</h2>
+              <br>
+              <div class="calendar-header flex items-center justify-center space-x-2">
+              <button @click="mostrarMes = true" class="px-2 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Ver por Mes</button>
+              <button @click="mostrarMes = false" class="px-2 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Ver por Día</button>
+              <div v-if="mostrarMes" class="flex items-center">
+                  <button @click="mesAnterior" class="px2 py-1 bg-blue-200 rounded-md hover:bg-blue-300 flex-shrink-0">&lt;</button>
+                  <h3 class="text-xl font-semibold">{{ mesActual }}</h3>
+                  <button @click="mesSiguiente" class="px-2 py-1 bg-blue-200 rounded-md hover:bg-blue-300 flex-shrink-0">&gt;</button>
+              </div>
+          <div v-else>
+            <input type="date" v-model="fechaSeleccionada" @change="verCitasPorDia" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+          </div>
       </div>
+
+      
       <div class="calendar-days">
         <div v-for="dia in diasSemana" :key="dia" class="calendar-day">{{ dia }}</div>
       </div>
@@ -181,10 +184,10 @@
   <style scoped>
   .calendar {
     font-family: 'Roboto', sans-serif;
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
     background-color: #f8f8f8;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
   }

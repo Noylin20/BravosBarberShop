@@ -12,7 +12,7 @@ defineProps({
 
 
 <template>
-    <div class="bg-gray p-5 space-y-3 rounded-lg bg-light-gray-500">
+    <div class="bg-gray p-4 space-y-3 rounded-lg bg-light-gray-500">
         <p class="text-black-500 font-black">
             Fecha: <span class="font-light">{{ displayDate(appointment.date) }}</span>
             <br><br> Hora: <span class="font-light">{{ appointment.time }}</span>
@@ -23,7 +23,7 @@ defineProps({
         </p>
           
 
-        <p class="text-lg font-black">Servicios solicitados en la cita</p>
+        <p class="text-lg font-black">Servicios solicitados en la cita:</p>
 
         <div v-for="service in appointment.services" >
             <p>{{ service.name }}</p>

@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-left: 200px; margin-right: 200px; margin-top: 60px;">
+    <div style="margin-left: 100px; margin-right: 100px; margin-top: 60px;">
       <div style="text-align: center;">
         <h2><b>Servicios disponibles</b></h2>
       </div>

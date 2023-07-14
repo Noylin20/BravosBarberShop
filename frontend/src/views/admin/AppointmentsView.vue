@@ -6,9 +6,16 @@ const user = useUserStore()
 </script>
 
 <template>
-    <p class="text-black text-lg mt-5">
-        A continuación podrás administrar tus próximas citas
-    </p>
+
+<div style="margin-left: 100px; margin-right: 100px; margin-top: 60px;">
+     
+    <div style="text-align: center;">
+        <h2><b>Citas agendadas</b></h2>
+      </div>
+
+      <hr style="width: 70%; margin-left: 15%;">
+      <br /><br />
+      
     <p v-if="user.loading" class="text-black text-2xl text-center mt-4">
         Cargando...
     </p>
@@ -39,4 +46,6 @@ const user = useUserStore()
                 />
             </div>
     </div>
+
+</div>
 </template>
