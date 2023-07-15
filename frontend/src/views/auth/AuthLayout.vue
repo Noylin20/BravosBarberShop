@@ -14,13 +14,13 @@ const authRoutes = [
 
 <template>
     <Nav />
-    <div class="mx-auto ">
+    <div >
         <RouterView />
 
-        <nav class="mt-10 flex flex-col items-center space-y-5 lg:flex-row lg:justify-between lg:space-y-0 mx-auto  lg:w-3/12"
-            style="position: relative;top: 50px;">
+        <div class="mt-10 flex flex-col items-center space-y-5 lg:flex-row lg:justify-between lg:space-y-0 mx-auto  lg:w-3/12"
+            style="position: relative;top: 50px; background: none;">
             <RouterLink v-for="authRoute in authRoutes" class="uppercase font-bold text-black" :to="{ name: authRoute.name }"
                 :class="{ 'hidden': route.name === authRoute.name }">{{ authRoute.text }}</RouterLink>
-        </nav>
+    </div>
     </div>
 </template>
