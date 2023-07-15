@@ -36,7 +36,7 @@ const handleSubmit = async (formData) => {
       </div>
     </div>
 
-    <div class="mx-auto  lg:w-3/12" style="position: relative;top:50px;">
+    <div class="mx-auto lg:w-3/12" style="position: relative;top:50px;">
       <FormKit id="loginForm" type="form" :actions="false"
         incomplete-message="No se pudo enviar, revisa las notificaciones" @submit="handleSubmit">
 
@@ -57,6 +57,7 @@ const handleSubmit = async (formData) => {
     </div>
   </div>
 </template>
+
 <style>
 .img_AU {
   position: relative;
@@ -79,7 +80,27 @@ const handleSubmit = async (formData) => {
   color: white;
   font-size: 3.4rem;
 }
-.fsize{
+
+.fsize {
   font-size: large;
+}
+
+@media (max-width: 767px) {
+  .img_AU {
+    height: 250px;
+  }
+
+  .center_Txt {
+    top: 20%;
+    font-size: 2rem;
+  }
+
+  .fsize {
+    font-size: medium;
+  }
+
+  .mx-auto {
+    width: 80%;
+  }
 }
 </style>

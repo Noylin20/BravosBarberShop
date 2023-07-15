@@ -13,7 +13,7 @@ defineProps({
 
 
 <template>
-  <div class="mi-div p-5 space-y-5 rounded-lg cursor-pointer "
+  <div class="mi-div p-3 space-y-2 rounded-lg cursor-pointer "
     :class="appointments.isServiceSelected(service._id) ? 'bg-blue-500 text-white' : 'bg-light-gray-500'"
     @click="appointments.onServiceSelected(service)">
 

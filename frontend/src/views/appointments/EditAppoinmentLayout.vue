@@ -28,8 +28,9 @@ onMounted(async () => {
 
 
 <template>
+
    <div clas="mi-div">
-   <nav class="my-5 flex gap-3"> 
+   <nav class="my-5 flex gap-3 flex gap-3" style="position: relative; top: 20px;">
      
       <RouterLink
          :to="{name: 'edit-appointment'}"
@@ -51,7 +52,7 @@ onMounted(async () => {
    <div class="space-y-5">
        <RouterView/>
    </div>
-  
+
 </template>
 <style>
 

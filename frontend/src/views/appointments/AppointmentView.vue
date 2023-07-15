@@ -56,11 +56,7 @@ const totalDuration = computed(() => {
 
    <div class="mi-div px-4 md:px-8 py-4">
     <!-- <h2 class="text-4xl font-extrabold text-black">Detalles y resumen de la cita</h2> -->
-    <h2 class="text-2xl font-extrabold text-black mt-18 mb-6 text-left">Servicios seleccionados</h2>
-
-    <p class="text-black text-lg mt-5 text-left">A continuación verifica la información y confirma tu cita</p>
-
-    
+    <h1 class="text-2xl font-extrabold text-black mt-18 mb-6 text-left">Servicios seleccionados</h1>
 
     <p v-if="appointments.noServicesSelected" class="text-black text-2xl">No hay servicios seleccionados</p>
 
@@ -71,11 +67,11 @@ const totalDuration = computed(() => {
 
       </div>
       <div class="text-gray-700 text-lg font-bold mr-2">
-        Duración estimada: {{ totalDuration }} minutos
+        <i class="far fa-clock mr-2"></i> Duración estimada: {{ totalDuration }} minutos
       </div>
       <div class="flex justify-end mt-2">
         <div class="text-gray-700 text-lg font-bold mr-2">
-          Total a pagar:
+            <i class="fas fa-coins mr-2"></i>Total a pagar:
         </div>
         <div class="flex items-center">
           <div class="text-sm font-bold text-sm-gray-900">
@@ -87,7 +83,7 @@ const totalDuration = computed(() => {
 
     <div v-if="appointments.isDateSelected" class="flex justify-start mt-4">
       <div class="text-gray-700 text-base font-bold mr-2">
-        Barbero:
+        <i class="fas fa-user mr-2"></i> Barbero:
       </div>
       <div>
         <select v-model="selectedBarber" class="border border-gray-300 rounded-md px-3 py-2">
@@ -96,9 +92,9 @@ const totalDuration = computed(() => {
         </select>
       </div>
     </div>
-
+    <br>
     <div class="space-y-8" v-if="!appointments.noServicesSelected">
-      <h3 class="text-3xl font-extrabold text-black">Fecha y hora</h3>
+      <h3 class="text-3xl font-extrabold text-black"><i class="far fa-calendar-check mr-2"></i> Fecha y hora</h3>
       <div class="lg:flex gap-5 items-start">
         <div class="w-full lg:w-96 bg-white flex justify-center rounded-lg">
           <VueTailwindDatepicker :disable-date="disableDate" i18n="es-cr" as-single no-input :formatter="formatter"
