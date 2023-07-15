@@ -4,8 +4,7 @@ import { useUserStore } from '../../stores/user'
 const user = useUserStore()
 </script>
 <template>
-    <br>
-    <div class="mi-div" style="position: relative; top: ;">
+    <div class="mi-div" style="position: relative; top: 1px;">
         <h2 class="flex-1 text-center p-4 uppercase font-extrabold hover:text-black">Mis citas</h2>
         <hr>
         <div class="mi-div">

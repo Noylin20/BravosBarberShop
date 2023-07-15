@@ -36,13 +36,13 @@ defineProps({
             <RouterLink 
                 :to="{name: 'edit-appointment', params: { id: appointment._id } }"
                 class="no-underline bg-green-600 rounded-lg p-3 text-white text-sm uppercase font-black flex-1 md:flex-none">
-                <i class="fas fa-pencil-alt mr-2"></i>Editar cita
+                Editar cita
             </RouterLink>
             <button 
                 class="bg-red-600 rounded-lg p-3 text-white text-sm uppercase font-black flex-1 md:flex-none"
                 @click="appointments.cancelAppointment(appointment._id)"
                 >
-                <i class="fas fa-ban mr-2"></i>Cancelar cita
+                Cancelar cita
             </button>
 
         </div>

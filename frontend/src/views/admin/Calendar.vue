@@ -1,3 +1,4 @@
+import { useAppointmentsStore } from 'module';
 <template>
   <div class="calendar">
     <h2>Calendario de Citas</h2>
@@ -44,6 +45,12 @@
 </template>
 
 <script>
+import  {useAppointmentsStore} from '../../stores/appointments'
+
+const appointments = useAppointmentsStore()
+
+const varriable = appointments.getAllAppointments()
+
 export default {
   data() {
     return {

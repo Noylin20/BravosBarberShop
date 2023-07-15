@@ -13,52 +13,33 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     const hours = ref([])
     const time = ref('')
     const appointmentsByDate = ref([])
-    const totalTime = ref([])
-
+    
     const state = reactive({
         appointments: [] // Asegúrate de inicializarla como un array vacío
-      })
+    })
 
     const toast = inject('toast')
     const router = useRouter()
     const user = useUserStore()
-    
-
-    // onMounted(() => {
-    //     const starHour = 10;
-    //     const endHour = 19;
-
-    //     for (let hour = starHour; hour <= endHour; hour++) {
-    //         let format = (hour < 12) ? 'am' : 'pm';
-    //         let hourFormatted = (hour <= 12) ? hour : hour - 12;
-    //         hours.value.push(hourFormatted + ':00 ' + format);
-    //     }
-    // })
 
 
-    
     onMounted(() => {
         const startHour = 10;
         const endHour = 19;
-      
+
         for (let hour = startHour; hour <= endHour; hour++) {
-          for (let minute = 0; minute < 60; minute += 15) {
-            const format = (hour < 12) ? 'am' : 'pm';
-            const hourFormatted = (hour <= 12) ? hour : hour - 12;
-            const timeFormatted = hourFormatted + ':' + ('0' + minute).slice(-2) + ' ' + format;
-            hours.value.push(timeFormatted);
-          }
+            for (let minute = 0; minute < 60; minute += 15) {
+                const format = (hour < 12) ? 'am' : 'pm';
+                const hourFormatted = (hour <= 12) ? hour : hour - 12;
+                const timeFormatted = hourFormatted + ':' + ('0' + minute).slice(-2) + ' ' + format;
+                hours.value.push(timeFormatted);
+            }
         }
-
-        // for(let i = 0; i<= appointment.value.length(); i++){
-
-        // } -----------------guardar las duraciones
-      });
-      
+    });
 
 
-  // Watcher para detectar cambios en la selección del barbero
-    
+
+    // Watcher para detectar cambios en la selección del barbero
     watch(date, async () => {
         time.value = ''
 
@@ -66,9 +47,7 @@ export const useAppointmentsStore = defineStore('appointments', () => {
         //Obtenemos las citas
         const { data } = await AppointmentAPI.getByDate(date.value)
 
-        //appointmentsByDate.value = data
-
-
+ 
         if (appointmentId.value) {
             appointmentsByDate.value = data.filter(appointment => appointment._id !== appointmentId.value)
             const currentTime = data.filter(appointment => appointment._id === appointmentId.value)[0].time
@@ -83,7 +62,6 @@ export const useAppointmentsStore = defineStore('appointments', () => {
 
     //Trae la informacion cargada de la cita que se desea editar
     function setSelectedAppointment(appointment) {
-        console.log(appointment)
         services.value = appointment.services
         date.value = convertToDDMMYYYY(appointment.date)
         time.value = appointment.time
@@ -151,26 +129,24 @@ export const useAppointmentsStore = defineStore('appointments', () => {
                     message: data.msg,
                     type: 'success'
                 })
-    
+
                 user.userAppointments = user.userAppointments.filter(appointment => appointment._id !== id)
             } catch (error) {
-                const errorMsg = error.response.data.msg.replace(/(https?:\/\/)?[\d.]+(:\d+)?/g, '');
-                if (errorMsg.trim() !== '') {
-                    toast.open({
-                        message: errorMsg,
-                        type: 'error'
-                    })
-                }
+
+                toast.open({
+                    message: errorMsg,
+                    type: 'error'
+                })
             }
         }
     }
-    
+
 
     function onServiceSelected(service) {
         ///Vamos a comprobar que no hayan servicios repetidos
         if (services.value.some(selectedService => selectedService._id === service._id)) {
             services.value = services.value.filter(selectedService => selectedService._id !== service._id)
-       } 
+        }
         else {
             if (services.value.length === 10000) {
                 alert('Maximo 5 servicios por cita')

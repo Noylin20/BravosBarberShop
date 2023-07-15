@@ -17,6 +17,12 @@ onMounted(()=>{
 
 
 <template>
+   <div class="mi-div" style="position: relative; top: 1px;">
+        <h2 class="flex-1 text-center p-4 uppercase font-extrabold hover:text-black">Nueva cita</h2>
+        <hr>
+        <div class="mi-div">
+        </div>
+    </div>
    <div class="mi-div">
    <nav class=" my-5 flex gap-3" style="position: relative; top: 20px;">
       <RouterLink
