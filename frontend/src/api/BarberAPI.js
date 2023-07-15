@@ -11,6 +11,9 @@ export default {
         return api.delete(`/barbers/${id}`)
     },getBarberById(id){
         return api.get(`/barbers/${id}`)
+    }, 
+    getAllBarbers(){
+        return api.get('/barbers')
     }
 
 }

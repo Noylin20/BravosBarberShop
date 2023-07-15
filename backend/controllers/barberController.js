@@ -26,13 +26,17 @@ const createBarber = async (req, res) => {
     }
 }
 
-const getBarbers = async (req, res) => {  
-   try {
-      const barbers = await Barbers.find()
-      res.json(barbers)
-   } catch (error) {
-    console.log(error)
-   }
+const varrr = ref(['']); // Inicializas varrr con un valor predeterminado
+
+async function getAllBarbers() {
+  try {
+    const barberosPromise = barbers.getAllBarbers();
+    const barberos = await barberosPromise;
+    varrr.value = barberos; // Guarda la lista de barberos en varrr
+  } catch (error) {
+    console.log(error);
+    varrr.value = []; // En caso de error, guarda una lista vacía en varrr
+  }
 }
 
 const getBarberById = async (req, res) => {  
@@ -109,7 +113,7 @@ const deleteBarber = async (req, res) => {
 
 export {
     createBarber,
-    getBarbers,
+    getAllBarbers,
     getBarberById,
     updateBarber,
     deleteBarber

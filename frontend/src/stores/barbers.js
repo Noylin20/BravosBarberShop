@@ -7,7 +7,7 @@ export const useBarbersStore = defineStore('barbers', () => {
 
     const barbers = ref([])
 
-    const barberId = ref('')
+  //  const barberId = ref('')
     const name = ref('')
     const lastName = ref('')
     const email = ref('')
@@ -61,6 +61,17 @@ export const useBarbersStore = defineStore('barbers', () => {
       }
       
 
+      async function getAllBarbers() {
+        try {
+          const { data } = await BarbersAPI.getAllBarbers();
+          return data; // Devuelve la lista de barberos encontrados
+        } catch (error) {
+          console.log(error);
+          return null; // Devuelve null si ocurre un error
+        }
+      }
+      
+
     async function deleteBarber(id) {
         if (confirm('¿Desea eliminar este barbero?')) {
             try {
@@ -80,7 +91,7 @@ export const useBarbersStore = defineStore('barbers', () => {
     }
 
     return {
-        barbers: barbers,
+        barbers,
         name,
         lastName,
         email,
@@ -88,6 +99,7 @@ export const useBarbersStore = defineStore('barbers', () => {
         scheduleEnd,
         createBarber,
         deleteBarber,
-        getBarberById
+        getBarberById,
+        getAllBarbers
     }
 })
