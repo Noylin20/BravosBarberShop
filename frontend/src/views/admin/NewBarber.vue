@@ -64,14 +64,14 @@ const handleSubmit = async ({ ...formData }) => {
             <tr>
               <th style="padding-right: 10px; position: relative; bottom: 0px;">
                 <label>Horario del barbero:</label>
-                <FormKit type="text" name="scheduleStart" placeholder="Horario de entrada" validation="required"
+                <FormKit type="time" name="scheduleStart" placeholder="Horario de entrada" validation="required"
                   :validation-messages="{
                     required: 'La hora de inicio es obligatoria'
                   }" />
               </th>
               <th style="padding-left: 10px; position: relative; bottom: 0px;">
                 <label> </label>
-                <FormKit type="text" name="scheduleEnd" placeholder="Horario de salida" validation="required"
+                <FormKit type="time" name="scheduleEnd" placeholder="Horario de salida" validation="required"
                   :validation-messages="{
                     required: 'La hora de salida es obligatoria'
                   }" />

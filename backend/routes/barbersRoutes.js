@@ -1,5 +1,5 @@
 import express from 'express'
-import { createBarber, getBarberById, updateBarber, deleteBarber, getAllBarbers} from '../controllers/barberController.js'
+import { createBarber, getBarberById, updateBarber, deleteBarber, getBarbers, getAllBarbers} from '../controllers/barberController.js'
 
 
 const router = express.Router()
@@ -7,7 +7,7 @@ const router = express.Router()
 //definir ruta
 router.route('/')
     .post(createBarber)
-   // .get(getBarbers)
+   .get(getBarbers)
     .get(getAllBarbers)
  
 router.route('/:id')

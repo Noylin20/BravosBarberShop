@@ -1,6 +1,6 @@
 
 import Barbers from '../models/Barber.js'
-
+import {ref} from 'vue'
 import { validateObjectID, handleNotFoundError } from '../utils/index.js'
 
 const createBarber = async (req, res) => {  
@@ -26,17 +26,13 @@ const createBarber = async (req, res) => {
     }
 }
 
-const varrr = ref(['']); // Inicializas varrr con un valor predeterminado
-
-async function getAllBarbers() {
-  try {
-    const barberosPromise = barbers.getAllBarbers();
-    const barberos = await barberosPromise;
-    varrr.value = barberos; // Guarda la lista de barberos en varrr
-  } catch (error) {
-    console.log(error);
-    varrr.value = []; // En caso de error, guarda una lista vacía en varrr
-  }
+const getBarbers = async (req, res) => {  
+   try {
+      const barbers = await Barbers.find()
+      res.json(barbers)
+   } catch (error) {
+    console.log(error)
+   }
 }
 
 const getBarberById = async (req, res) => {  
@@ -73,7 +69,6 @@ const updateBarber = async (req, res) => {
    barber.name = req.body.name || barber.name
    barber.lastName = req.body.lastName || barber.lastName
    barber.email = req.body.email || barber.email
-   barber.phone = req.body.phone || barber.phone
    barber.scheduleStart = req.body.scheduleStar || barber.scheduleStart
    barber.scheduleEnd = req.body.scheduleEnd || barber.scheduleEnd
 
@@ -111,8 +106,23 @@ const deleteBarber = async (req, res) => {
 }
 
 
+const varrr = ref(['']); // Inicializas varrr con un valor predeterminado
+
+async function getAllBarbers() {
+  try {
+    const barberosPromise = barbers.getAllBarbers();
+    const barberos = await barberosPromise;
+    varrr.value = barberos; // Guarda la lista de barberos en varrr
+  } catch (error) {
+    console.log(error);
+    varrr.value = []; // En caso de error, guarda una lista vacía en varrr
+  }
+}
+
+
 export {
     createBarber,
+    getBarbers,
     getAllBarbers,
     getBarberById,
     updateBarber,

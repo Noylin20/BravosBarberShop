@@ -23,6 +23,7 @@ const disableDate = (date) => {
 
 
 const varr = barbersBD.getAllBarbers()
+console.log(varr)
 varr.then((barberos) => {
   console.log('Mis barberos', barberos);
 }).catch((error) => {
@@ -37,6 +38,7 @@ const barbers = ref([]);
 
 barbersBD.getAllBarbers().then((barberos) => {
   barbers.value = barberos;
+  console.log()
 
 }).catch((error) => {
   console.log('Error al obtener la lista de barberos', error);

@@ -49,7 +49,7 @@ import  {useAppointmentsStore} from '../../stores/appointments'
 
 const appointments = useAppointmentsStore()
 
-const varriable = appointments.getAllAppointments()
+// const varriable = appointments.getAllAppointments()
 
 export default {
   data() {
