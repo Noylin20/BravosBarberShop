@@ -83,7 +83,7 @@ const user = useUserStore();
 
 nav {
     background: #283747;
-    height: 80px;
+    height: 90px;
     width: 100%;
 }
 
@@ -105,7 +105,7 @@ nav {
     height: 150px;
     width: 350px;
     margin-left: -60px;
-    margin-top: -55px;
+    margin-top: -51px;
 }
 
 nav ul {

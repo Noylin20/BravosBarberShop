@@ -15,7 +15,7 @@ defineProps({
 
 
 <template>
-    <div class="bg-gray p-5 space-y-3 rounded-lg">
+    <div class="p-5 space-y-2 rounded-lg font" style="text-align: center; border: 3px solid #85929E;  background: #E5E8E8;">
         <p class="text-black-500 font-black">
             Fecha: <span class="font-light">{{ displayDate(appointment.date) }}</span>
             Hora: <span class="font-light">{{ appointment.time }}</span>
@@ -24,22 +24,22 @@ defineProps({
         <p class="text-lg font-black">Servicios solicitados en la cita</p>
 
         <div v-for="service in appointment.services" :key="service.name">
-            <p>{{ service.name }}</p>
-            <p class="text-1xl font-black text-blue-500">{{ formatCurrency(service.price) }}</p>
+            <p class="font-light">{{ service.name }}</p>
+            <p class="text-1xl font-black " style="color: #5D6D7E;">{{ formatCurrency(service.price) }}</p>
         </div>
 
-        <p class="text-1xl font-black text-right">
-            Total a pagar: <span class="text-blue-600">{{ formatCurrency(appointment.totalAmount) }}</span>
+        <p class="text-1xl font-black">
+            Total a pagar: <span class="font-black" style="color: #5D6D7E;">{{ formatCurrency(appointment.totalAmount) }}</span>
         </p>
-
-        <div class="flex gap-2 items-center">
+        <br>
+        <div class="flex gap-2 items-center contenedor">
             <RouterLink 
                 :to="{name: 'edit-appointment', params: { id: appointment._id } }"
-                class="no-underline bg-green-600 rounded-lg p-3 text-white text-sm uppercase font-black flex-1 md:flex-none">
+                class="btn btn-outline-primary no-underline bg-green-600 rounded-lg p-3 text-sm uppercase font-black flex-1 md:flex-none">
                 Editar cita
             </RouterLink>
             <button 
-                class="bg-red-600 rounded-lg p-3 text-white text-sm uppercase font-black flex-1 md:flex-none"
+            type="button" class="btn btn-outline-danger bg-red-600 rounded-lg p-3  text-sm uppercase font-black flex-1 md:flex-none"
                 @click="appointments.cancelAppointment(appointment._id)"
                 >
                 Cancelar cita
@@ -52,6 +52,10 @@ defineProps({
 
   
 <style scoped>
+
+.font{
+    font-size: 18px;
+}
 .bg-gray {
     background-color: #f3f4f6;
 }
@@ -62,10 +66,11 @@ defineProps({
 
 .font-black {
     font-weight: 900;
+    /* color: #212F3C; */
 }
 
 .font-light {
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .text-lg {

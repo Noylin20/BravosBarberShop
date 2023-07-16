@@ -13,17 +13,25 @@ defineProps({
 
 
 <template>
-  <div class="mi-div p-3 space-y-2 rounded-lg cursor-pointer "
-    :class="appointments.isServiceSelected(service._id) ? 'bg-blue-500 text-white' : 'bg-light-gray-500'"
+  <div class="p-5 space-y-2 rounded-lg" style="text-align: center; border: 3px solid #85929E; "
+    :class="appointments.isServiceSelected(service._id) ? 'colorCS text-white' : 'bg-light-gray-500'"
     @click="appointments.onServiceSelected(service)">
 
-    <p class="text-2xl font-light">{{ service.name }}</p>
-    <p class="text-2xl font-black " :class="appointments.isServiceSelected(service._id) ? 'text-white' : 'text-blue-600'">
+    <p class="text-2xl ">{{ service.name }}</p>
+    <p class="text-2xl font-black " :class="appointments.isServiceSelected(service._id) ? 'text-white' : 'colorTxtD'">
       {{ formatCurrency(service.price) }}</p>
 
   </div>
 </template>
 <style>
+.colorTxtD{
+  color:#5D6D7E ;
+}
+
+.colorCS{
+  background-color: #2E4053;
+}
+
 .bg-light-gray-500 {
   background-color: #dbd9d9;
   /* Ajusta el valor del color según tu preferencia */

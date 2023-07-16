@@ -10,13 +10,15 @@ const store = useServicesStore()
 
 <template>
  <div class="mi-div">
-  <h2 class="text-2xl font-extrabold text-black mt-18 mb-6 text-left">Seleccione los servicios que desea recibir</h2>
-
+  <br>
+  <h2 class="text-2xl font-extrabold text-black mt-18 mb-6 text-left" style="text-align: center;">Seleccione los servicios que desea recibir</h2>
+  <br>
 </div>
 
 
  
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-4">
+<div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 lg:grid-cols-8 gap-3 mt-10">
+  
    <ServiceItem
     v-for="service in store.services"
     :key="service._id"
