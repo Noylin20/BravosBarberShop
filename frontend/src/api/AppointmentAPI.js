@@ -23,4 +23,16 @@ export default{
     getUserAdmin(userId){
         return api.get(`/users/${userId}/admin`)
     },
+    all(){
+        return api.get('/appointments')
+    },
+    getAllAppointments(){
+        return api.get('/appointments')
+    },
+    all(){
+        return api.get('/appointments')
+    }
+
+
 }
+

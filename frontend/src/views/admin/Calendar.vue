@@ -25,8 +25,9 @@ import { useAppointmentsStore } from 'module';
           </div>
           <div class="grid-item-citas" v-if="item.citas.length > 0">
             <div v-for="cita in item.citas" :key="cita.id" class="grid-item-cita" :class="{ 'active': citaVisible === cita.id }" @click="seleccionarCita(cita.id)">
-              <p class="cita-time">{{ cita.hora }}</p>
-              <p class="cita-nombre">{{ cita.nombre }}</p>
+              <p class="cita-time">Hora: {{ cita.hora }}</p>
+              <p class="cita-nombre">Nombre: {{ cita.nombre }}</p>
+              <p class="cita-nombre">Barbero: {{ cita.barbero }}</p>
             </div>
           </div>
           <div class="grid-item-sin-citas" v-else>
@@ -39,15 +40,46 @@ import { useAppointmentsStore } from 'module';
       <div v-for="cita in citasDiaSeleccionado" :key="cita.id" class="cita">
         <p class="cita-time">{{ cita.hora }}</p>
         <p class="cita-nombre">{{ cita.nombre }}</p>
+        <p class="cita-nombre">{{ cita.barbero }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import  {useAppointmentsStore} from '../../stores/appointments'
 
-const appointments = useAppointmentsStore()
+import { useAppointmentsStore } from '../../stores/loadAppointments'
+import { ref } from 'vue';
+const appointmentsBD = useAppointmentsStore()
+
+
+//const list = varr.getAll()
+
+appointmentsBD.getAllAppointments()
+  .then((data) => {
+    console.log('Datos obtenidos:', data);
+    console.log('Datos nombre:', name);
+  })
+  .catch((error) => {
+    console.log('Error al obtener los datos:', error);
+  });
+
+ const varr = appointmentsBD.getAllAppointments()
+console.log(varr)
+varr.then((users) => {
+  console.log('Mis usuarios ', users);
+}).catch((error) => {
+  console.log('Error al obtener la lista de usuarios ', error);
+});
+
+const appointments = ref([]);
+
+appointmentsBD.getAllAppointments().then((barberos) => {
+  appointments.value = barberos;
+  
+}).catch((error) => {
+  console.log('Error al obtener la lista de barberos', error);
+});
 
 // const varriable = appointments.getAllAppointments()
 
@@ -105,17 +137,23 @@ export default {
 
       // Ejemplo de datos
       const citas = [
-        { id: 1, fecha: '2023-07-04', nombre: 'Andrey Castro', hora: '10:00' },
+        { id: 1, fecha: '2023-07-04', nombre: 'Andrey Castro', hora: '10:00', barbero: 'Pedro Nuñez' },
         { id: 2, fecha: '2023-07-04', nombre: 'Victor Aguirre', hora: '15:30' },
-        { id: 3, fecha: '2023-07-10', nombre: 'Samuel Castillo', hora: '09:00' },
-        { id: 4, fecha: '2023-07-13', nombre: 'Ariel Rojas', hora: '16:15' },
-        { id: 5, fecha: '2023-07-13', nombre: 'Greivin Esquivel', hora: '13:15' },
-        { id: 6, fecha: '2023-07-14', nombre: 'Hugo Vega', hora: '12:15' },
-        { id: 7, fecha: '2023-07-13', nombre: 'Anthony Villalobos', hora: '15:15' },
-        { id: 7, fecha: '2023-07-14', nombre: 'Sebastián Vargas', hora: '15:15' },
-        { id: 7, fecha: '2023-07-13', nombre: 'Mauricio Salas', hora: '10:15' },
-        { id: 7, fecha: '2023-07-14', nombre: 'Tyron Villalobos', hora: '11:15' },
-        { id: 7, fecha: '2023-07-13', nombre: 'Saúl Villegas', hora: '10:15' }
+        { id: 3, fecha: '2023-07-10', nombre: 'Samuel Castillo', hora: '09:00' , barbero: 'Javier Gónzalez' },
+        { id: 4, fecha: '2023-07-13', nombre: 'Ariel Rojas', hora: '16:15', barbero: 'Alberto Suarez' },
+        { id: 5, fecha: '2023-07-13', nombre: 'Greivin Esquivel', hora: '13:15', barbero: 'Pedro Nuñez' },
+        { id: 6, fecha: '2023-07-14', nombre: 'Hugo Vega', hora: '12:15' , barbero: 'Alberto Suarez' },
+        { id: 7, fecha: '2023-07-13', nombre: 'Anthony Villalobos', hora: '15:15', barbero: 'Alberto Suarez' },
+        { id: 7, fecha: '2023-07-14', nombre: 'Sebastián Vargas', hora: '16:15', barbero: 'Alberto Suarez' },
+        { id: 7, fecha: '2023-07-13', nombre: 'Mauricio Salas', hora: '10:15', barbero: 'Pedro Nuñez' },
+        { id: 7, fecha: '2023-07-14', nombre: 'Tyron Villalobos', hora: '11:15', barbero: 'Javier Gónzalez' },
+        { id: 7, fecha: '2023-07-18', nombre: 'Saúl Villegas', hora: '10:15', barbero: 'Alberto Suarez' },
+        { id: 7, fecha: '2023-07-13', nombre: 'Saúl Villegas', hora: '10:15', barbero: 'Pedro Nuñez' },
+        { id: 7, fecha: '2023-07-13', nombre: 'Saúl Villegas', hora: '10:15' , barbero: 'Javier Gónzalez' },
+        { id: 7, fecha: '2023-07-13', nombre: 'Saúl Villegas', hora: '10:15', barbero: 'Alberto Suarez' },
+        { id: 7, fecha: '2023-07-14', nombre: 'Saúl Villegas', hora: '10:15', barbero: 'Pedro Nuñez' },
+        { id: 7, fecha: '2023-07-13', nombre: 'Saúl Villegas', hora: '13:15', barbero: 'Javier Gónzalez' }
+
         // ...
       ];
 

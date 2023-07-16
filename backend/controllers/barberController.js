@@ -110,7 +110,7 @@ const varrr = ref(['']); // Inicializas varrr con un valor predeterminado
 
 async function getAllBarbers() {
   try {
-    const barberosPromise = barbers.getAllBarbers();
+    const barberosPromise = Barbers.getAllBarbers();
     const barberos = await barberosPromise;
     varrr.value = barberos; // Guarda la lista de barberos en varrr
   } catch (error) {

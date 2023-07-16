@@ -13,7 +13,10 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     const hours = ref([])
     const time = ref('')
     const appointmentsByDate = ref([])
-    
+    const appoint = ref([])
+
+
+
     const state = reactive({
         appointments: [] // Asegúrate de inicializarla como un array vacío
     })
@@ -24,6 +27,8 @@ export const useAppointmentsStore = defineStore('appointments', () => {
 
 
     onMounted(() => {
+
+     
         const startHour = 10;
         const endHour = 19;
 
@@ -47,7 +52,7 @@ export const useAppointmentsStore = defineStore('appointments', () => {
         //Obtenemos las citas
         const { data } = await AppointmentAPI.getByDate(date.value)
 
- 
+
         if (appointmentId.value) {
             appointmentsByDate.value = data.filter(appointment => appointment._id !== appointmentId.value)
             const currentTime = data.filter(appointment => appointment._id === appointmentId.value)[0].time
@@ -111,6 +116,15 @@ export const useAppointmentsStore = defineStore('appointments', () => {
 
     }
 
+    async function getAllAppointments(userId = '64aded0bbc0195b41f92a8fc') {
+        try {
+            const { data } = await AppointmentAPI.getUserAppointments(userId);
+            return data; // Devuelve la lista de usuarios encontrados
+        } catch (error) {
+            console.log(error);
+            return null; // Devuelve null si ocurre un error
+        }
+    }
 
 
     function clearAppointmentData() {//reinicia los servicios y elecciones después de elegir una cita y volver a generar una nueva
@@ -187,6 +201,7 @@ export const useAppointmentsStore = defineStore('appointments', () => {
     })
 
     return {
+        appoint,
         services,
         date,
         hours,
@@ -202,6 +217,6 @@ export const useAppointmentsStore = defineStore('appointments', () => {
         isValidReservation,
         isDateSelected,
         disableTime,
-        state
+        getAllAppointments
     }
 })

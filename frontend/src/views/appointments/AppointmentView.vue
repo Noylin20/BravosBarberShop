@@ -21,7 +21,6 @@ const disableDate = (date) => {
   //|| [0,6].includes(date.getDay()) para deshabilitar fines de semana 
 }
 
-
 const varr = barbersBD.getAllBarbers()
 console.log(varr)
 varr.then((barberos) => {
@@ -30,16 +29,11 @@ varr.then((barberos) => {
   console.log('Error al obtener la lista de barberos', error);
 });
 
-// const barbers = ref([
-//   { _id: '64a255030f365ff57693a25b', name: 'Juan Moya', entryTime: '09:00', exitTime: '11:00' },
-//   { _id: '64ada381e123f4228ee57bc3', name: 'Manuel Perez', entryTime: '12:00', exitTime: '14:00' }
-// ])
 const barbers = ref([]);
 
 barbersBD.getAllBarbers().then((barberos) => {
   barbers.value = barberos;
-  console.log()
-
+  
 }).catch((error) => {
   console.log('Error al obtener la lista de barberos', error);
 });

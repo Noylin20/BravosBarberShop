@@ -46,7 +46,7 @@ const user = useUserStore()
     <div class="w-3/4 p-8">
 
       <main class="space-v-6">
-        <router-view />
+        <Router-view />
       </main>
     </div>
   </div>

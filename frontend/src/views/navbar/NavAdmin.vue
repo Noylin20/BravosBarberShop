@@ -86,7 +86,8 @@ const user = useUserStore();
                 </a></li>
             <li><a class="no-underline text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                     <i class="fas fa-user mr-2"></i>
-                    Hola: {{ user.getUserName }}
+                    ¡Bienvenido! 
+                    <!-- {{ user.getUserName }} -->
                 </a></li>
             <li><a> <button type="button"
                         class="bg-red-600 hover:bg-red-700 p-2 text-white uppercase text-xs font-extrabold rounded-lg"

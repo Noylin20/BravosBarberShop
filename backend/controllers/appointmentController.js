@@ -3,6 +3,7 @@ import Appointment from '../models/Appointment.js'
 import { validateObjectID, handleNotFoundError, formateDate} from '../utils/index.js'
 import { sendEmailNewAppointment, sendEmailUpdateAppointment, sendEmailCancelAppointment} from '../emails/appointmentEmailServices.js'
 
+import {ref as ref2} from 'vue'
 
 const createAppointment = async (req, res) => {
 
@@ -150,11 +151,33 @@ const deleteAppointment= async (req, res)=>{
         console.log(error)
     }
 }
+const getAppointments = async (req, res) => {  
+    try {
+       const appointment = await Appointment.find()
+       res.json(appointment)
+    } catch (error) {
+     console.log(error)
+    }
+ }
+
+ const varrr = ref2(['']); // Inicializas varrr con un valor predeterminado
+
+ const getAllAppointments = async (req, res) => {  
+    try {
+        const appointments = await Appointment.find();
+        res.json(appointments);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Error al obtener las citas' });
+    }
+};
 
 export {
     createAppointment,
     getAppointmentsByDate,
     getAppointmentById,
     updateAppointment,
-    deleteAppointment
+    deleteAppointment,
+    getAllAppointments,
+    getAppointments
 }
