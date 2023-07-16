@@ -39,9 +39,10 @@ onMounted(() => {
             </RouterLink>
          </div>
       </div>
-      <hr style="width: 80%; position: relative; margin-left: 10%;">
+    
       <div class="mi-div">
       </div>
+      <hr style="width: 80%; position: relative; margin-left: 10%;">
    </div>
 
    <div class="space-y-5">
@@ -74,4 +75,6 @@ onMounted(() => {
    justify-content: center;
    margin-left: 24%;
 }
+
+
 </style>

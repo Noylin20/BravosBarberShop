@@ -28,6 +28,7 @@ const user = useUserStore()
   display: flex;
   justify-content: center;
   align-items: center;
+  bottom: 0px;
 }
 
 .mi-div {

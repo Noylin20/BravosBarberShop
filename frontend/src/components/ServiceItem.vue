@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <div class="p-5 space-y-2 rounded-lg" style="text-align: center; border: 3px solid #85929E; "
-    :class="appointments.isServiceSelected(service._id) ? 'colorCS text-white' : 'bg-light-gray-500'"
+    :class="appointments.isServiceSelected(service._id) ? 'colorCS text-white' : 'colorCD'"
     @click="appointments.onServiceSelected(service)">
 
     <p class="text-2xl ">{{ service.name }}</p>
@@ -26,6 +26,10 @@ defineProps({
 <style>
 .colorTxtD{
   color:#5D6D7E ;
+}
+
+.colorCD{
+  background-color: #E5E8E8;;
 }
 
 .colorCS{

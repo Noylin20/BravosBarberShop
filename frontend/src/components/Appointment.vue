@@ -32,6 +32,7 @@ defineProps({
             Total a pagar: <span class="font-black" style="color: #5D6D7E;">{{ formatCurrency(appointment.totalAmount) }}</span>
         </p>
         <br>
+        
         <div class="flex gap-2 items-center contenedor">
             <RouterLink 
                 :to="{name: 'edit-appointment', params: { id: appointment._id } }"
@@ -52,6 +53,10 @@ defineProps({
 
   
 <style scoped>
+
+.position{
+    margin-bottom: 0px;
+}
 
 .font{
     font-size: 18px;
