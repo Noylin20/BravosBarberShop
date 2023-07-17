@@ -119,9 +119,9 @@ const totalDuration = computed(() => {
           <div class="posit">
             <h3 class="text-3xl font-extrabold text-black"><i class="far fa-calendar-check mr-2"></i> Fecha y hora</h3>
             <br>
-            <div class="w-full lg:w-96 bg-white flex justify-center rounded-lg">
+            <div class="w-full lg:w-96 flex justify-center rounded-lg">
               <VueTailwindDatepicker :disable-date="disableDate" i18n="es-cr" as-single no-input :formatter="formatter"
-                v-model="appointments.date" />
+                v-model="appointments.date" class="dp__theme_dark" style="color: #2E4053;" />
             </div>
           </div>
           <br><br>
@@ -159,8 +159,8 @@ const totalDuration = computed(() => {
 
 
         <div v-if="appointments.isValidReservation" class="flex justify-center" style="position: relative; top: 70px;">
-          <button class="w-full md:w-auto btn btn-outline-success p-3 rounded-lg uppercase font-black "
-            @click="appointments.saveAppointment">
+          <button class="w-full md:w-auto btn btn-outline-secondary p-3 rounded-lg uppercase font-black "
+            @click="appointments.saveAppointment" onclick="this.disabled = true">
             Confirmar cita
           </button>
         </div>
@@ -168,19 +168,20 @@ const totalDuration = computed(() => {
     </div>
   </div>
 </template>
+
 <style>
 .posit {
   display: flex;
   flex-direction: column;
 }
 
-.btn-outline-success, .btn-outline-success:active, .btn-outline-success:visited, .btn-outline-success:focus {
+.btn-outline-secondary, .btn-outline-secondary:active, .btn-outline-secondary:visited, .btn-outline-secondary:focus {
     border-color: #2E4053;
     color: #2E4053;
     background-color: white;
 }
 
-.btn-outline-success:hover {
+.btn-outline-secondary:hover {
   background-color: #2E4053;
   cursor: pointer;
 }
@@ -206,6 +207,5 @@ const totalDuration = computed(() => {
     font-size: 13px;
   }
 
-  select {}
 }
 </style>

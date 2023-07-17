@@ -16,16 +16,16 @@ const handleSubmit = async ({ ...formData }) => {
 
 
 <template>
-  <div style="position: relative; top: 50px;">
+  <div style="position: relative; top: 50px; overflow: hidden; ">
     <div style="text-align: center;">
       <h2><b>Crear nuevo barbero</b></h2>
       <hr style="position: relative; width: 70%; margin-left: 15%;">
     </div>
-
+    <br>
     <div>
       <FormKit id="createForm" type="form" :actions="false"
         incomplete-message="No se pudo enviar, revisa las notificaciones" @submit="handleSubmit">
-        <table style="width: 100%;">
+        <table style="width: 80%; display: grid; place-items: center; margin-left: 8%;">
           <tbody>
             <tr>
               <th style="padding-right: 10px; position: relative; bottom: 0px;">
@@ -70,22 +70,26 @@ const handleSubmit = async ({ ...formData }) => {
                   }" />
               </th>
               <th style="padding-left: 10px; position: relative; bottom: 0px;">
-                <label> </label>
+                <label>Hora de salida</label>
                 <FormKit type="time" name="scheduleEnd" placeholder="Horario de salida" validation="required"
                   :validation-messages="{
                     required: 'La hora de salida es obligatoria'
                   }" />
               </th>
             </tr>
-            <RouterLink :to="{ name: 'barbers-list' }"
-            style="width: 15%; position: absolute; top: 0; right: 0;border: 1px solid #053d2f;"
-                    class="btn btn-outline-success no-underline p-2 text-center text-black-200 uppercase text-xs font-black rounded-lg ">
-                   Regresar
-            </RouterLink>
 
           </tbody>
         </table>
-        <FormKit style="margin-left: 40%; width: 15%; font-size: 20px;" type="submit">Crear barbero</FormKit>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <FormKit type="submit"
+            style="width: 100%; height: 60px; font-size: 20px; background: none; border: 1px solid #0780FF; color: #0780FF !important;">
+            Crear barbero</FormKit>
+          <RouterLink :to="{ name: 'barbers-list' }" style="width: 160px; height: 50px; margin-top: 1%;"
+            class="btn btn-outline-success no-underline p-2 text-center font-extrabold uppercase text-xs rounded-lg "
+            onclick="this.disabled = true">
+            Regresar
+          </RouterLink>
+        </div>
       </FormKit>
     </div>
   </div>

@@ -1,16 +1,19 @@
 import { useAppointmentsStore } from 'module';
 <template>
   <div class="calendar">
-    <h2>Calendario de Citas</h2>
+    <h2 class="font-extrabold">Calendario de citas</h2>
+    <br>
     <div class="calendar-header">
-      <button @click="mostrarSemana = true">Ver por Semana</button>
-      <button @click="mostrarSemana = false">Ver por Día</button>
-      <div v-if="mostrarSemana">
-        <button @click="semanaAnterior">&lt;</button>
-        <h3>{{ semanaActual }}</h3>
-        <button @click="semanaSiguiente">&gt;</button>
+      <button @click="mostrarSemana = true" style="width: 140px; height: 50px;" class="btns">Ver por Semana</button>
+      &nbsp; &nbsp; 
+      <button @click="mostrarSemana = false" style="width: 110px; height: 50px;" class="btns">Ver por Día</button>
+      <div v-if="mostrarSemana" class="lg:flex gap-3 btnsF" style="position: relative; margin-left: 65%; top: -20px;">
+        <button @click="semanaAnterior" class="btnsF1">&lt;</button>
+        <h2 class="semAct">{{ semanaActual }}</h2>
+        <button @click="semanaSiguiente" class="btnsF2">&gt;</button>
       </div>
-      <div v-else>
+      <div v-else style="position: relative; margin-left: 70%;">
+        <h5 class="txt">Seleccione el día:</h5>
         <input type="date" v-model="fechaSeleccionada" @change="verCitasPorDia" />
       </div>
     </div>
@@ -210,12 +213,16 @@ export default {
 <style scoped>
 .calendar {
   font-family: 'Roboto', sans-serif;
-  max-width: 800px;
+  width: 90%;
+  max-width: 90%;
   margin: 0 auto;
+  position: relative;
+  margin-top: 170px;
   background-color: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  overflow: hidden;
 }
 
 h2 {
@@ -226,13 +233,12 @@ h2 {
 
 .calendar-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
   margin-bottom: 20px;
 }
 
 .calendar-header button {
-  background-color: #6495ed;
+  background-color: #2E4053;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -243,7 +249,7 @@ h2 {
 }
 
 .calendar-header button:hover {
-  background-color: #4787d3;
+  background-color: #2E4053;
 }
 
 .calendar-days {
@@ -284,8 +290,8 @@ h2 {
 }
 
 .calendar-grid-item.current-day {
-  background-color: #6495ed;
-  color: #4e1818;
+  background-color: #2E4053;
+  color: white ;
 }
 
 .grid-item-date {
@@ -312,7 +318,7 @@ h2 {
 }
 
 .grid-item-cita.active {
-  background-color: #6495ed;
+  background-color: #2E4053;
   color: #fff;
 }
 
@@ -346,6 +352,36 @@ h2 {
     padding: 10px;
   }
 
+  input{
+    font-size: 12px;
+    position: relative;
+    margin-left: -130% !important;
+  }
+
+  button{
+    font-size: 11px !important;
+    width: 30% !important;
+    height: 40px !important;
+  }
+
+  .btns{
+    width: 100px !important;
+    height: 40px !important;
+    min-width: 70px !important;
+  }
+
+  .semAct{
+    font-size: 12px;
+    margin-left: -150px;
+  }
+
+  .txt{
+    position: relative;
+    top: 5px;
+    margin-left: -130%;
+    font-size: 11px;
+  }
+
   .calendar-header {
     margin-bottom: 10px;
   }
@@ -369,7 +405,10 @@ h2 {
 
   .grid-item-cita {
     padding: 5px;
-    font-size: 12px;
+    font-size: 10px !important;
+  }
+  .grid-item-sin-citas{
+    font-size: 10px;
   }
 
   .cita-time {
@@ -378,6 +417,35 @@ h2 {
 
   .cita-nombre {
     font-size: 10px;
+  }
+
+  .grid-item-date{
+    font-size: 11px;
+  }
+  .cita-time{
+    font-size: 10px;
+  }
+  .calendar-grid-week{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .btnsF{
+
+    position: relative;
+    right: 50px !important;
+    top: -30px !important;
+  }
+
+  .btnsF1{
+    position: relative;
+     top:30px;
+     right: 130px;
+  }
+  .btnsF2{
+    position: relative;
+     top:-32px;
+     right: 10px;
   }
 }
 </style>

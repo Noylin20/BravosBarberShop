@@ -36,12 +36,12 @@ defineProps({
         <div class="flex gap-2 items-center contenedor">
             <RouterLink 
                 :to="{name: 'edit-appointment', params: { id: appointment._id } }"
-                class="btn btn-outline-primary no-underline bg-green-600 rounded-lg p-3 text-sm uppercase font-black flex-1 md:flex-none">
+                class="btn btn-outline-primary no-underline bg-green-600 rounded-lg p-3 text-sm uppercase font-black flex-1 md:flex-none" onclick="this.disabled = true">
                 Editar cita
             </RouterLink>
             <button 
             type="button" class="btn btn-outline-danger bg-red-600 rounded-lg p-3  text-sm uppercase font-black flex-1 md:flex-none"
-                @click="appointments.cancelAppointment(appointment._id)"
+                @click="appointments.cancelAppointment(appointment._id)" onclick="this.disabled = true"
                 >
                 Cancelar cita
             </button>

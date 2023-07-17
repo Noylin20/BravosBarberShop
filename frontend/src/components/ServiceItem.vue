@@ -29,7 +29,7 @@ defineProps({
 }
 
 .colorCD{
-  background-color: #E5E8E8;;
+  background-color: #E5E8E8;
 }
 
 .colorCS{
