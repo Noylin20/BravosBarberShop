@@ -12,7 +12,7 @@ defineProps({
 
 
 <template>
-    <div class="bg-gray p-4 space-y-3 rounded-lg bg-light-gray-500">
+    <div class="p- space-y-3 rounded-lg " style="text-align: center; border: 3px solid #85929E; background-color:#E5E8E8 !important ;">
         <p class="text-black-500 font-black">
             Fecha: <span class="font-light">{{ displayDate(appointment.date) }}</span>
             <br><br> Hora: <span class="font-light">{{ appointment.time }}</span>
@@ -41,6 +41,18 @@ defineProps({
 <style>
 .bg-light-gray-500 {
   background-color: #dbd9d9; /* Ajusta el valor del color según tu preferencia */
+}
+
+.colorTxtD{
+  color:#5D6D7E ;
+}
+
+.colorCD{
+  background-color: #E5E8E8;
+}
+
+.colorCS{
+  background-color: #2E4053;
 }
 </style>
 

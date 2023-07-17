@@ -78,7 +78,7 @@ const totalDuration = computed(() => {
 </script>
 
 <template>
-  <div class=" px-4 md:px-8 py-4">
+  <div class=" px-4 md:px-8 py-4 mi-div">
     <!-- <h2 class="text-4xl font-extrabold text-black">Detalles y resumen de la cita</h2> -->
     <h1 class="text-2xl font-extrabold text-black mt-18 mb-6 text-left" style="text-align: center;">Servicios
       seleccionados</h1>

@@ -6,13 +6,20 @@ const services = useServicesStore()
 </script>
 
 <template>
-    <div style="position:relative;top:60px;">
+    <div style="position:relative;top:60px;" class="mi-div">
         <div style="text-align: center;">
             <h2><b>Servicios disponibles</b></h2>
         </div>
         <hr style="position: relative; width: 70%; margin-left: 15%;">
         <br /><br />
         <div>
+      <button type="button" class="btn btn-outline-success createBtn" style="width: 150px; float: right; margin-right: 30px;" @click="$router.push({ name: 'newService' })">
+        Crear
+      </button>
+    </div>
+    <br>
+    <br>
+        <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -54,13 +61,6 @@ const services = useServicesStore()
                         </td>
                         </td>
                     </tr>
-
-                    <td style="width: 15%; position: absolute; top: 0; right: 0;">
-                        <button type="button" class="btn btn-outline-success" @click="$router.push({ name: 'newService' })">
-                            Crear
-                        </button>
-
-                    </td>
                 </tbody>
             </table>
 
@@ -73,4 +73,19 @@ const services = useServicesStore()
     margin-left: 100px;
     margin-right: 100px;
 }
+
+@media screen and (max-width: 767px) {
+    .mi-div{
+        width: 100%;
+        margin-left: 1px;
+    }
+    .createBtn{
+      position: relative;
+      margin-right: 10px !important;
+      font-size: 13px;
+      width: 20% !important;
+      height: 40px !important;
+    }
+}
+
 </style>

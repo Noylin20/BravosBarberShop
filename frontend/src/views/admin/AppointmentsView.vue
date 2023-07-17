@@ -7,7 +7,7 @@ const user = useUserStore()
 
 <template>
 
-<div style="margin-left: 100px; margin-right: 100px; margin-top: 30px;">
+<div style="margin-left: 100px; margin-right: 100px; margin-top: 30px;" class="spaceB">
      
     <div style="text-align: center;">
         <h2><b>Citas agendadas</b></h2>
@@ -25,7 +25,7 @@ const user = useUserStore()
             <div class="mr-4">
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-8">
                 <AdminAppointment
                     v-for="appointment in user.userAppointments"
                     :key="appointment._id"
@@ -37,3 +37,13 @@ const user = useUserStore()
 
 </div>
 </template>
+<style>
+@media screen and (max-width: 767px) {
+    .spaceB{
+        position: relative;
+        margin-left: 2px !important;
+        margin-right: 2px !important;
+
+    }
+}
+</style>

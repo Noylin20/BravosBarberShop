@@ -5,14 +5,14 @@ const barbers = useBarbersStore()
 </script>
 
 <template>
-  <div style="position:relative;top:60px; overflow: hidden;">
+  <div style="position:relative;top:60px; overflow: hidden;" class="mi-div">
     <div style="text-align: center;">
       <h2><b>Barberos disponibles</b></h2>
     </div>
     <hr style="position: relative; width: 80%; margin-left: 10%;">
     <br /><br />
     <div>
-      <button type="button" class="btn btn-outline-success" style="width: 150px; float: right; margin-right: 30px;" @click="$router.push({ name: 'newBarber' })">
+      <button type="button" class="btn btn-outline-success createBtn" style="width: 150px; float: right; margin-right: 30px;" @click="$router.push({ name: 'newBarber' })">
         Crear
       </button>
     </div>
@@ -91,6 +91,20 @@ const barbers = useBarbersStore()
 .btn-outline-secondary:hover {
   background-color: #2E4053;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .mi-div{
+        width: 100%;
+        margin-left: 1px;
+    }
+    .createBtn{
+      position: relative;
+      margin-right: 10px !important;
+      font-size: 13px;
+      width: 20% !important;
+      height: 40px !important;
+    }
 }
 
 </style>

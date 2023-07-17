@@ -25,7 +25,7 @@ const handleSubmit = async ({ ...formData }) => {
     <div>
       <FormKit id="createForm" type="form" :actions="false"
         incomplete-message="No se pudo enviar, revisa las notificaciones" @submit="handleSubmit">
-        <table style="width: 80%; display: grid; place-items: center; margin-left: 8%;">
+        <table style="width: 60%; margin-left: 400px; margin-right: 400px !important;">
           <tbody>
             <tr>
               <th style="padding-right: 10px; position: relative; bottom: 0px;">
@@ -94,3 +94,14 @@ const handleSubmit = async ({ ...formData }) => {
     </div>
   </div>
 </template>
+<style>
+@media screen and (max-width: 767px) {
+  table {
+    position: relative;
+    width: 95% !important;
+    margin-left: 22px !important;
+    right: 12px !important;
+
+  }
+}
+</style>
