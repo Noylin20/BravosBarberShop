@@ -37,10 +37,10 @@ const user = useUserStore()
     text-align: center;
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .mi-div {
-        margin-left: 10px;
-        margin-right: 10px;
+        width: 100% !important;
+        margin-left: 1px !important;
     }
-}
+} */
 </style>

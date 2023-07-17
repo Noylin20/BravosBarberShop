@@ -6,7 +6,7 @@ const services = useServicesStore()
 </script>
 
 <template>
-    <div style="position:relative;top:60px;" class="mi-div">
+    <div style="position:relative;top:60px; overflow: hidden !important;" class="mi-div">
         <div style="text-align: center;">
             <h2><b>Servicios disponibles</b></h2>
         </div>
@@ -20,7 +20,7 @@ const services = useServicesStore()
     <br>
     <br>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped txtS">
                 <thead>
                     <tr>
                         <th scope="col" style="text-align: left;">#</th>
@@ -47,14 +47,14 @@ const services = useServicesStore()
 
                         <td style="width: 5%;"></td> <!-- Espacio agregado -->
                         <td style="width: 10%;">
-                            <button type="button" class="btn btn-outline-info"
+                            <button type="button" class="btn btn-outline-info btnT" disabled="true"
                                 @click="services.updateService(service); updateTable(service)">
                                 Editar
                             </button>
                         </td>
                         <td style="width: 5%;"></td> <!-- Espacio agregado -->
                         <td style="width: 10%;">
-                            <button type="button" class="btn btn-outline-danger"
+                            <button type="button" class="btn btn-outline-danger btnT"
                                 @click="services.deleteService(service._id)">
                                 Eliminar
                             </button>
@@ -83,8 +83,14 @@ const services = useServicesStore()
       position: relative;
       margin-right: 10px !important;
       font-size: 13px;
-      width: 20% !important;
-      height: 40px !important;
+      width: 14% !important;
+      height: 4% !important;
+    }
+    .txtS{
+        font-size: 12px;
+    }
+    .btnT{
+      font-size: 12px;
     }
 }
 

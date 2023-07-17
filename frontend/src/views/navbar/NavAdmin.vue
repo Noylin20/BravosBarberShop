@@ -57,7 +57,7 @@ const user = useUserStore();
             <i class="fas fa-bars"></i>
         </label>
         <a href="#" class="enlace">
-            <img class="logo" src="../../../public/img/logoD.png">
+            <img class="logo imgNR" src="../../../public/img/logoD.png">
         </a>
         <ul>
             <li><a class="format rounded-md text-md font-medium text-gray-300" href="#">
@@ -218,6 +218,13 @@ li a:hover {
     #check:checked~ul {
         left: 0;
     }
+    .imgNR{
+    position: relative;
+    left: -90px !important;
+      width: 280px !important;
+      height: 150px !important;
+      margin-left: 1px !important;
+   }
 }
 
 .img2 {
@@ -227,4 +234,6 @@ li a:hover {
     width: 250px;
     margin-top: -55px;
     margin-left: -150px;
-}</style>
+}
+
+</style>

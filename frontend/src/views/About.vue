@@ -4,17 +4,17 @@ import Nav from '../views/navbar/Nav.vue'
 
 <template>
   <Nav />
-  <div class="about-us" >
+  <div class="about-us" style="text-align: center; position: relative; margin-top: 150px !important;">
     <h2  class="flex-1 text-center p-1 uppercase font-extrabold  hover:text-black">¡Somos Bravo´s Barbería!</h2>
-    <hr>
-    <div class="about-us-content">
+    <hr style="width: 80%; margin-left: 10%;">
+    <div class="about-us-content" style="font-size: 20px !important;">
       <br><br>
       <h2><b>¿Quiénes somos?</b></h2>
       <p>Somos una barbería especializada en ofrecer servicios de calidad para hombres. Nuestro objetivo es brindar una experiencia única de cuidado personal y estilo.</p>
-      <br>
+      <br><br>
       <h2><b>¿Qué ofrecemos?</b></h2>
       <p>Contamos con un equipo de barberos profesionales altamente capacitados que están comprometidos en brindar cortes de cabello y afeitados excepcionales.</p>
-      <br>
+      <br><br>
       <h2><b>¡Visitanos!</b></h2>
       <p>Nos enorgullece crear un ambiente acogedor y relajante para nuestros clientes, donde puedan disfrutar de un excelente servicio y sentirse renovados.</p>
     </div>
@@ -22,12 +22,12 @@ import Nav from '../views/navbar/Nav.vue'
 </template>
 
 <style>
-.about-us {
+/* .about-us {
   text-align: center;
   margin-left: 8%;
   margin-right: 3%;
   margin-top: 50px;
-}
+} */
 
 h2 {
   font-size: 24px;

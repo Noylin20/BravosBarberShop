@@ -98,5 +98,11 @@ onMounted(async () => {
    margin-left: 24%;
 }
 
+@media screen and (max-width: 767px) {
+   .mi-div {
+      width: 100%;
+      margin-left: 1px !important;
+   }
+}
 
 </style>

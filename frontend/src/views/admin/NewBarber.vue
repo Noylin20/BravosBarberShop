@@ -22,7 +22,7 @@ const handleSubmit = async ({ ...formData }) => {
       <hr style="position: relative; width: 70%; margin-left: 15%;">
     </div>
     <br>
-    <div>
+    <div class="txtP">
       <FormKit id="createForm" type="form" :actions="false"
         incomplete-message="No se pudo enviar, revisa las notificaciones" @submit="handleSubmit">
         <table style="width: 60%; margin-left: 400px; margin-right: 400px !important;">
@@ -81,11 +81,12 @@ const handleSubmit = async ({ ...formData }) => {
           </tbody>
         </table>
         <div style="display: flex; flex-direction: column; align-items: center;">
-          <FormKit type="submit"
-            style="width: 100%; height: 60px; font-size: 20px; background: none; border: 1px solid #0780FF; color: #0780FF !important;">
-            Crear barbero</FormKit>
-          <RouterLink :to="{ name: 'barbers-list' }" style="width: 160px; height: 50px; margin-top: 1%;"
-            class="btn btn-outline-success no-underline p-2 text-center font-extrabold uppercase text-xs rounded-lg "
+          <FormKit type="submit" style="background:none;">
+            <button type="submit"
+              class="btn btn-outline-primary btnT2">Crear barbero</button>
+           </FormKit>
+          <RouterLink :to="{ name: 'barbers-list' }"
+            class="btn btn-outline-success btnT2"
             onclick="this.disabled = true">
             Regresar
           </RouterLink>
@@ -95,13 +96,33 @@ const handleSubmit = async ({ ...formData }) => {
   </div>
 </template>
 <style>
+.btnT2 {
+  width: 220px;
+  height: 55px;
+}
+
 @media screen and (max-width: 767px) {
+  .txtP{
+    font-size: 13px;
+  }
+
   table {
     position: relative;
     width: 95% !important;
     margin-left: 22px !important;
     right: 12px !important;
 
+  }
+
+  .txtT {
+    font-size: 13px !important;
+  }
+
+  .btnT2 {
+    margin-top: -30px;
+    font-size: 12px !important;
+    width: 150px;
+    height: 40px;
   }
 }
 </style>

@@ -19,7 +19,7 @@ const barbers = useBarbersStore()
     <br>
     <br>
     <div class="table-responsive">
-      <table class="table  table-striped" >
+      <table class="table  table-striped txtS" >
         <thead>
           <tr>
             <th scope="col" style="text-align: left;">#</th>
@@ -44,23 +44,23 @@ const barbers = useBarbersStore()
             <td contenteditable="true" style="height: 70px;" @input="barber.phone = $event.target.textContent">{{
               barber.phone }}</td>
             <td contenteditable="true" style="height: 70px;" @input="barber.scheduleStart = $event.target.textContent">{{
-              barber.scheduleStart }}</td>
+              barber.scheduleStart }} AM</td>
             <td contenteditable="true" style="height: 70px;" @input="barber.scheduleEnd = $event.target.textContent">{{
-              barber.scheduleEnd }}</td>
+              barber.scheduleEnd }} PM</td>
 
             <td>
 
 
             <td style="width: 5%;"></td> <!-- Espacio agregado -->
             <td style="width: 10%;">
-              <button type="button" class="btn btn-outline-info"
-                @click="barbers.updateBarber(barber); updateTable(barber)" onclick="this.disabled = true">
+              <button type="button" class="btn btn-outline-info btnT"
+                @click="barbers.updateBarber(barber); updateTable(barber)" onclick="this.disabled = true" disabled="true">
                 Editar
               </button>
             </td>
             <td style="width: 5%;"></td> <!-- Espacio agregado -->
             <td style="width: 10%;">
-              <button type="button" class="btn btn-outline-danger" @click="barbers.deleteBarber(barber._id)" onclick="this.disabled = true">
+              <button type="button" class="btn btn-outline-danger btnT" @click="barbers.deleteBarber(barber._id)" onclick="this.disabled = true">
                 Eliminar
               </button>
             </td>
@@ -102,8 +102,14 @@ const barbers = useBarbersStore()
       position: relative;
       margin-right: 10px !important;
       font-size: 13px;
-      width: 20% !important;
-      height: 40px !important;
+      width: 14% !important;
+      height: 4% !important;
+    }
+    .txtS{
+        font-size: 12px;
+    }
+    .btnT{
+      font-size: 12px;
     }
 }
 

@@ -52,7 +52,7 @@ const user = useUserStore();
             <i class="fas fa-bars"></i>
         </label>
         <a href="#" class="enlace">
-            <img class="logo" src="../../../public/img/logoD.png">
+            <img class="logo imgNR" src="../../../public/img/logoD.png">
         </a>
         <ul>
             <li><a class="no-underline text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/reservaciones"><i
@@ -74,3 +74,14 @@ const user = useUserStore();
 
     </nav>
 </template>
+<style>
+@media screen and (max-width: 767px) {
+   .imgNR{
+    position: relative;
+    left: -90px !important;
+      width: 280px !important;
+      height: 150px !important;
+      margin-left: 1px !important;
+   }
+}
+</style>

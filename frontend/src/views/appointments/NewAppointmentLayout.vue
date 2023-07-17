@@ -20,10 +20,10 @@ onMounted(() => {
    <div>
       <div class="img_NC">
          <div class="center_Txt">
-      <h2 class="text-5xl font-bold  text-center mt-10 uppercase">Nueva cita</h2>
-      <p class="text-xl text-center my-3 ">En Bravo´s Barbería te ofrecemos las mejores opciones</p>
-   </div>
-   </div>
+            <h2 class="text-5xl font-bold  text-center mt-10 uppercase">Nueva cita</h2>
+            <p class="text-xl text-center my-3 ">En Bravo´s Barbería te ofrecemos las mejores opciones</p>
+         </div>
+      </div>
       <div class="mi-div">
          <div class="my-5 flex gap-3 menu " style="position: relative; top: 20px; background: none;">
             <RouterLink :to="{ name: 'new-appointment' }"
@@ -39,7 +39,7 @@ onMounted(() => {
             </RouterLink>
          </div>
       </div>
-    
+
       <div class="mi-div">
       </div>
       <hr style="width: 80%; position: relative; margin-left: 10%;">
@@ -51,22 +51,15 @@ onMounted(() => {
 </template>
 <style>
 .img_NC {
-  position: relative;
-  top: -30px;
-  width: 100%;
-  height: 280px;
-  background-image: url('/img/NC.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.mi-div {
    position: relative;
-   /* left: 4%;
-   right: 5%; */
-   /* margin-right: 10%; */
+   top: -30px;
+   width: 100%;
+   height: 280px;
+   background-image: url('/img/NC.jpg');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
 }
 
 .menu {
@@ -76,5 +69,10 @@ onMounted(() => {
    margin-left: 24%;
 }
 
-
+@media screen and (max-width: 767px) {
+   .mi-div {
+      width: 100%;
+      margin-left: 1px !important;
+   }
+}
 </style>
