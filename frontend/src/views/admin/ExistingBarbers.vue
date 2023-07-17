@@ -18,8 +18,8 @@ const barbers = useBarbersStore()
     </div>
     <br>
     <br>
-    <div>
-      <table class="table table-striped" >
+    <div class="table-responsive">
+      <table class="table  table-striped" >
         <thead>
           <tr>
             <th scope="col" style="text-align: left;">#</th>
